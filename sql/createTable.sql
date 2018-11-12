@@ -4,13 +4,9 @@ create database teaching_skills;
 drop table user_info cascade;
 drop table order_info cascade;
 drop table school_info cascade;
-drop table buyer_1_info cascade;
-drop table buyer_2_info cascade;
-drop table seller_1_info cascade;
-drop table seller_2_info cascade;
-drop table school_1_1_info cascade;
-drop table school_1_2_info cascade;
-drop table school_2_1_info cascade;
+drop table course_info cascade;
+drop table account cascade;
+drop table seller_info cascade;
 /* NOTE: two changes:
 1) remove the course_info and combine both as an order_info table
 2) remove the campus_id column in school_info table and mixed with the school_id
