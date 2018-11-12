@@ -4,13 +4,9 @@ create database teaching_skills;
 drop table user_info cascade;
 drop table order_info cascade;
 drop table school_info cascade;
-drop table buyer_1_info cascade;
-drop table buyer_2_info cascade;
-drop table seller_1_info cascade;
-drop table seller_2_info cascade;
-drop table school_1_1_info cascade;
-drop table school_1_2_info cascade;
-drop table school_2_1_info cascade;
+drop table course_info cascade;
+drop table account cascade;
+drop table seller_info cascade;
 /* NOTE: two changes:
 1) remove the course_info and combine both as an order_info table
 2) remove the campus_id column in school_info table and mixed with the school_id
@@ -18,13 +14,33 @@ drop table school_2_1_info cascade;
           when record the school and campus infomation, just combine into one string
           (i.e. scu jiangan: 100, 1; scu wangjiang: 100, 2) c
           here add a delimiter "," to identify whether schoolID or campus ID*/
+
+/*school info(id, name, location)*/
+create table school_info(
+  school_id varchar(50),
+  campus_id varchar(50),
+  school_name varchar(50) not null,
+  campus_name varchar(50) not null,
+  province varchar(50),
+  city varchar(50) not null,
+  area varchar(50) not null,
+  location varchar(50) not null,
+  primary key(school_id,campus_id)
+);
+/*course info*/
+create table course_info(
+  id varchar(50),
+  name varchar(50),
+  primary key(id)
+);
+create sequence course_info_seq owned by course_info.id;
 /*user infomation*/
-create table account{
+create table account(
   id varchar(50),
   username varchar(50),
   password varchar(50),
   primary key(id)
-}
+);
 create table user_info(
   id varchar(50),
   username varchar(20) not null,
@@ -41,7 +57,7 @@ create table user_info(
 );
 create sequence user_info_seq owned by user_info.id;
 /*seller info*/
-create table seller_info{
+create table seller_info(
   id varchar(50),
   uid varchar(50),
   real_name varchar(10),
@@ -51,7 +67,7 @@ create table seller_info{
   primary key(id),
   foreign key(uid) references user_info(id),
   foreign key(real_school_id,real_campus_id) references school_info(school_id, campus_id)
-}
+);
 create sequence seller_info_seq owned by seller_info.id;
 /*course infomation*/
 create table order_info(
@@ -72,22 +88,3 @@ create table order_info(
   foreign key(school_id,campus_id) references school_info(school_id, campus_id)
 );
 create sequence order_info_seq owned by order_info.id;
-/*school info(id, name, location)*/
-create table school_info(
-  school_id varchar(50),
-  campus_id varchar(50),
-  school_name varchar(50) not null,
-  campus_name varchar(50) not null,
-  province varchar(50),
-  city varchar(50) not null,
-  area varchar(50) not null,
-  location varchar(50) not null,
-  primary key(school_id,campus_id)
-);
-/*course info*/
-create table course_info{
-  id varchar(50),
-  name varchar(50),
-  primary key(id)
-}
-create sequence course_info_seq owned by course_info.id;
