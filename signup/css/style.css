@@ -1,0 +1,127 @@
+*
+{
+  /* background: rgba(0, 0, 0, 0.1); */
+  box-sizing: border-box;
+}
+body
+{
+  background: #eee;
+}
+.nav
+{
+  padding: 5px;
+  margin: 0;
+  display: fixed;
+  background: #fff;
+}
+.wrap
+{
+  margin-top:auto;
+  width: 30em;
+  background: #fff;
+  margin-left: 60%;
+  max-width: 1000px;
+  /* opacity: 0; */
+  display: none;
+  position: relative;
+}
+
+.wrap-sm
+{
+  max-width: 450px;
+}
+
+h1
+{
+  margin-top: 0;
+}
+
+.header
+{
+  margin-top: 30px;
+  padding: 10px;
+}
+.header small
+{
+  font-size: 20%;
+}
+.input-wrap
+{
+  /* margin-bottom: 5px; */
+  padding:20px;
+}
+.input-wrap label
+{
+  padding: 5px;
+  margin: 10px 0;
+  color: #bbb;
+}
+.input-control
+{
+  margin-top: 10px;
+  padding: 5px 10px;
+  border: 1px solid #eee;
+  color: #fff;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #fff;
+  color:#444;
+}
+.btn
+{
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  border: 0;
+  background-color:#eee;
+  outline: none;
+  padding: 10px;
+  border-radius: 20%;
+}
+.btn:hover
+{
+  background: #999;
+}
+.input-control:enabled
+{
+  background: #eee;
+}
+.input-control:focus
+{
+  background: #fff;
+}
+.input-error
+{
+  color: #ffd41c;
+  display: none;
+}
+.QQ_wechat
+{
+  margin: 10px;
+}
+.QQ_wechat a
+{
+  display: inline-block;
+  width: 48%;
+  padding-top: 10%;
+  background-image: url('../img/wechat.png');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 20%;
+  text-align: center;
+  margin:20px 0;
+}
+.QQ_wechat #QQ_icon
+{
+  background-image: url('../img/qq.png');
+  border-right: 1px solid #444;
+}
+
+.QQ_wechat #wechat_icon
+{
+  background-image: url('../img/wechat.png');
+}
+.form
+{
+  padding: 20px;
+}
