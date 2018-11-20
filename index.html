@@ -11,6 +11,23 @@
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/index_style.css">
     <link rel="stylesheet" href="css/animate.css">
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).on("scroll",function() {
+        if ($(".nav").offset().top < 20) {
+          $("header").css('background-color', 'rgba(255, 255, 255, 0.1)');
+          $("ellipse").css('fill', 'rgba(255, 255, 255, 0.1)');
+        }
+        else {
+          $("header").css('background-color', 'rgba(255, 255, 255, 0.9)');
+          $("ellipse").css('fill', 'rgba(255, 255, 255, 0.9)');
+        }
+    });
+    $(document).ready(function() {
+      $("header").css('background-color', 'rgba(255, 255, 255, 0.1)');
+      $("ellipse").css('fill', 'rgba(255, 255, 255, 0.1)');
+    });
+    </script>
   </head>
 
   <body id="page-top">
@@ -33,11 +50,11 @@
             </div>
           </div>
           <div class="search">
-            <i class="fas fa-search fa-2x" onclick="toggleSearch()">
-              <form class="search_form" action="php/search.php" method="post">
-                <input type="text" name="search_key" placeholder="请输入课程关键字" id="search_key">
-              </form>
-            </i>
+            <i class="fas fa-search fa-2x" onclick="toggleSearch()"></i>
+            <form class="search_form" action="php/search.php" method="get">
+              <input type="text" name="search_key" placeholder="请输入课程关键字" id="search_key"
+              autocomplete="off">
+            </form>
           </div>
           <div class="logo">
             授渔
@@ -57,28 +74,28 @@
         <div class="circle">
           <svg height="140" width="500">
             <ellipse cx="200" cy="-10" rx="200" ry="50"
-            style="fill:rgba(0, 0, 0, 0.3)" />
+            style="fill:rgba(255, 255, 255, 0)" />
           </svg>
         </div>
       </header>
     </div>
     <div class="recommend">
       <div class="recommend_container">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
-        <div>6</div>
-        <div>7</div>
-        <div>8</div>
-        <div>9</div>
-        <div>10</div>
-        <div>11</div>
-        <div>12</div>
-        <div>13</div>
-        <div>14</div>
-        <div>15</div>
+        <div class="animated fadeInUp delay-1s">1</div>
+        <div class="animated fadeInUp delay-1s">2</div>
+        <div class="animated fadeInUp delay-1s">3</div>
+        <div class="animated fadeInUp delay-1s">4</div>
+        <div class="animated fadeInUp delay-1s">5</div>
+        <div class="animated fadeInUp delay-1s">6</div>
+        <div class="animated fadeInUp delay-1s">7</div>
+        <div class="animated fadeInUp delay-1s">8</div>
+        <div class="animated fadeInUp delay-1s">9</div>
+        <div class="animated fadeInUp delay-1s">10</div>
+        <div class="animated fadeInUp delay-1s">11</div>
+        <div class="animated fadeInUp delay-1s">12</div>
+        <div class="animated fadeInUp delay-1s">13</div>
+        <div class="animated fadeInUp delay-1s">14</div>
+        <div class="animated fadeInUp delay-1s">15</div>
       </div>
     </div>
     <div class="footer">
@@ -107,7 +124,6 @@
     </div>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
 
     <script>
       function menu_slide(x) {
@@ -116,15 +132,19 @@
       }
       function openNav() {
           document.getElementById("mySidenav").style.width = "250px";
-          document.getElementById("main").style.marginLeft = "250px";
       }
       function closeNav() {
           document.getElementById("mySidenav").style.width = "0";
-          document.getElementById("main").style.marginLeft= "0";
       }
       function toggleSearch(){
-        $(".search_form").css("visibility", "visible");
-        $("#search_key").css("width", "100%");
+        if ($(".search_form").css("visibility") == "hidden") {
+          $(".search_form").css("visibility", "visible");
+          $("#search_key").css("width", "100%");
+        }
+        else{
+          $(".search_form").css("visibility", "hidden");
+          $("#search_key").css("width", "0");
+        }
       }
     </script>
   </body>
