@@ -58,7 +58,7 @@ class UserInfo
     return $this->$propname;
   }
 
-  public function buyedList()
+  public function buyedList()//已购买的课程
   {
     if($this->verification=="buyer")
     {
@@ -70,7 +70,7 @@ class UserInfo
       return $result_arr;
     }
   }
-  public function selledList()
+  public function selledList()//已发布的课程
   {
     if($this->verification=="seller")
     {
