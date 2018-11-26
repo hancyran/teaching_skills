@@ -30,7 +30,7 @@ class Account
   {
     $db_o = new DB();
     $db_o->connect();
-    $sql = "SELECT * FROM account where name='" . $this->name . "'" ;
+    $sql = "SELECT * FROM account where username='" . $this->name . "'";
     $db_o->query($sql);
     $row = $db_o->getRow();//取出查询结果
     return $row;
@@ -43,32 +43,27 @@ class Account
       if($result_arr['password']==$this->password)
       {
         $this->id = $result_arr['id'];
-        echo "登陆成功！";
+        echo "<script>alert(登陆成功！)</script>";
         $time = time()+24*60*60;
         setCookie("uid", $this->id, $time, "/"); //设置COOKIE
         setCookie("username", $this->name, $time, "/"); //设置一个用户名COOKIE
         setCookie("isLogin", 1, $time, "/"); // 设置一个登录判断的标记isLogin
         echo '<script type="text/javascript">
-        setTimeout(function(){
-          window.location.href="../signup.html";
-        },1500);
+        alert("登陆成功！");
+        window.location.href="../signup.html";
         </script>';//返回主页
       }
       else{
-        echo "登录名或密码错误！请重新输入";
         echo '<script type="text/javascript">
-        setTimeout(function(){
-          window.location.href="../login.html";
-        },1000);
+        alert("登录名或密码错误！请重新输入");
+        window.location.href="../login.html";
         </script>';
       }
     }
     else{
-      echo "登录名或密码错误！请重新输入";
       echo '<script type="text/javascript">
-      setTimeout(function(){
-        window.location.href="../login.html";
-      },1000);
+      alert("登录名或密码错误！请重新输入");
+      window.location.href="../login.html";
       </script>';
     }
   }
@@ -93,10 +88,12 @@ class Account
       </script>";
     }
     else{
-      $sql = "insert into account(name,password) values(" . "'" . $this->name . "','" . $this->password . "')";
+      $sql1 = "insert into account(username,password) values(" . "'" . $this->name . "','" . $this->password . "')";
+      $sql2 = "insert into user_info(username) values(" . "'" . $this->name . "')";
       $db_o = new DB();
       $db_o->connect();
-      $db_o->execute($sql);
+      $db_o->execute($sql1);
+      $db_o->execute($sql2);
       echo "<script type='text/javascript'>
       alert('注册成功！请登录');
       window.location.href='../login.html';
