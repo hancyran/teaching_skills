@@ -36,14 +36,14 @@ class UserInfo
       $db->query($sql);
       $result_arr = $db->getAllRows();
       if($result_arr){
-        $this->tel = $result_arr['tel'];
-        $this->wechat = $result_arr['wechat'];
-        $this->QQ = $result_arr['QQ'];
-        $this->gender = $result_arr['gnder'];
-        $this->school = $result_arr['school'];
-        $this->campus = $result_arr['campus'];
-        $this->introduction = $result_arr['intro'];
-        $this->varification = $result_arr['varification'];
+        $this->tel = $result_arr[0]['tel'];
+        $this->wechat = $result_arr[0]['wechat'];
+        $this->QQ = $result_arr[0]['QQ'];
+        $this->gender = $result_arr[0]['gnder'];
+        $this->school = $result_arr[0]['school'];
+        $this->campus = $result_arr[0]['campus'];
+        $this->introduction = $result_arr[0]['intro'];
+        $this->varification = $result_arr[0]['varification'];
 
       }
     }
@@ -85,7 +85,12 @@ class UserInfo
 
   public function getHistory()
   {
-
+    $db = new DB();
+    $db->connect();
+    $sql="select * from order_info where userid='" . $this->id ."' and status =  " ;
+    $db->query($sql);
+    $result_arr = $db->getALlRows();
+    return $result_arr;
   }
 }
 

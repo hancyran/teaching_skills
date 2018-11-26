@@ -62,7 +62,7 @@ $history = $user->getHistory();
                 </div>
               </div>
             </div>
-            
+
           <?php  } ?>
 
 
@@ -72,10 +72,20 @@ $history = $user->getHistory();
 
       <div class="col-sm-3">
         <div class="calendar">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <div class="year">2018 年</div><div class="month">11 月</div>
+          <div class="day">
+            1 日
+          </div>
         </div>
         <div class="feedback">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <div class="title">
+            我要反馈
+          </div>
+          <ul class="content">
+            <li><a href="">课程反馈</a></li>
+            <li><a href="">功能异常</a></li>
+            <li><a href="">其他</a></li>
+          </ul>
         </div>
       </div>
 
