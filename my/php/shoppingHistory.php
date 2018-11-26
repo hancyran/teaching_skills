@@ -1,7 +1,10 @@
 <?php
 
 include 'UserInfo.php';
-
+$time = time()+24*60*60;
+setCookie("uid", '1000', $time, "/"); //设置COOKIE
+setCookie("username", 'karen', $time, "/"); //设置一个用户名COOKIE
+setCookie("isLogin", 1, $time, "/");
 $user = new UserInfo();
 $history = $user->getHistory();
  ?>
@@ -13,7 +16,7 @@ $history = $user->getHistory();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>历史订单</title>
-  <link rel="stylesheet" href=".../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/my.css">
 </head>
 <body>
@@ -25,7 +28,7 @@ $history = $user->getHistory();
     <div class="row">
       <div class="col-sm-2">
         <div class="list-group side-bar-left">
-          <a href="my.html" class="list-group-item">全部功能</a>
+          <a href="my.php" class="list-group-item">全部功能</a>
           <a href="#" class="list-group-item">我的购物车</a>
           <a href="#" class="list-group-item">进行中的课程</a>
           <a href="#" class="list-group-item active">历史订单</a>
@@ -49,14 +52,14 @@ $history = $user->getHistory();
                 </div>
                 <div class="col-sm-10">
                   <div class="title">
-                    <?php echo $value['coursename'] ?>
+                    <?php echo $value['class_name'] ?>
                   </div>
                   <div class="course-detail">
                     <div class="seller">
-                      <?php echo $value['sellername'] ?>
+                      <?php echo $value['seller_id'] ?>
                     </div>
                     <div class="status">
-                      <?php echo $value['coursestatus'] ?>
+                      <?php echo $value['status'] ?>
                     </div>
                   </div>
                 </div>
@@ -72,9 +75,9 @@ $history = $user->getHistory();
 
       <div class="col-sm-3">
         <div class="calendar">
-          <div class="year">2018 年</div><div class="month">11 月</div>
+          <div class="year"><?php echo date("Y")," 年"; ?></div><div class="month"><?php echo date("m")," 月"; ?></div>
           <div class="day">
-            1 日
+            <?php echo date("d")," 日"; ?>
           </div>
         </div>
         <div class="feedback">

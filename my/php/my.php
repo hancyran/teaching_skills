@@ -1,9 +1,10 @@
 <?php
 include 'UserInfo.php';
-// $time = time()+24*60*60;
-// setCookie("uid", 'userID', $time, "/"); //设置COOKIE
-// setCookie("username", 'username', $time, "/"); //设置一个用户名COOKIE
-// setCookie("isLogin", 1, $time, "/");
+//测试
+$time = time()+24*60*60;
+setCookie("uid", '1000', $time, "/"); //设置COOKIE
+setCookie("username", 'karen', $time, "/"); //设置一个用户名COOKIE
+setCookie("isLogin", 1, $time, "/");
 
 $user = new UserInfo();
  ?>
@@ -31,7 +32,7 @@ $user = new UserInfo();
            <a href="my.html" class="list-group-item active">全部功能</a>
            <a href="#" class="list-group-item">我的购物车</a>
            <a href="#" class="list-group-item">进行中的课程</a>
-           <a href="shoppingHistory.html" class="list-group-item">历史订单</a>
+           <a href="shoppingHistory.php" class="list-group-item">历史订单</a>
            <a href="#" class="list-group-item">我的评价</a>
            <a href="#" class="list-group-item">个人信息</a>
            <a href="#" class="list-group-item">我的收藏</a>
@@ -90,10 +91,20 @@ $user = new UserInfo();
 
        <div class="col-sm-3">
          <div class="calendar">
-           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+           <div class="year"><?php echo date("Y")," 年"; ?></div><div class="month"><?php echo date("m")," 月"; ?></div>
+           <div class="day">
+             <?php echo date("d")," 日"; ?>
+           </div>
          </div>
          <div class="feedback">
-           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+           <div class="title">
+             我要反馈
+           </div>
+           <ul class="content">
+             <li><a href="">课程反馈</a></li>
+             <li><a href="">功能异常</a></li>
+             <li><a href="">其他</a></li>
+           </ul>
          </div>
        </div>
 
