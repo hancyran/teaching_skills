@@ -44,7 +44,6 @@ class UserInfo
         $this->campus = $result_arr[0]['campus'];
         $this->introduction = $result_arr[0]['intro'];
         $this->varification = $result_arr[0]['varification'];
-
       }
     }
   }
@@ -94,4 +93,8 @@ class UserInfo
   }
 }
 
+  public function updateUserInfo($value='')
+  {
+    $sql = "uodate ** on***......"
+  }
  ?>
