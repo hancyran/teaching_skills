@@ -70,7 +70,15 @@ a.active
   margin: 10px 0;
   background: rgba(0, 0, 0, 0.1);
 }
+.col-sm-7 .content .title
+{
+  background: rgba(0, 0, 0, 0.2);
+}
 
+.col-sm-7 .content .browsingHistory
+{
+  background: rgba(0, 0, 0, 0.1);
+}
 .col-sm-3
 {
   /* background: rgba(0, 0, 0, 0.1); */
@@ -161,4 +169,10 @@ a.active
   display: block;
   color: #555;
   text-align: center;
+}
+button[name="alterInfo"],
+button[name="submit"]
+{
+  margin:10px;
+  float: right;
 }
