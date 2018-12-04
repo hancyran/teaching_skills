@@ -18,6 +18,8 @@ class UserInfo
   public $buyed;
   public $selled;
   public $isLogin;
+  public $baits;
+  public $balance;
 
   public function __construct()
   {

@@ -176,3 +176,38 @@ button[name="submit"]
   margin:10px;
   float: right;
 }
+.baits_balance
+{
+  background: rgba(255,247,65,.57);
+  margin-bottom: 10px;
+}
+.baits_balance .baits,
+.baits_balance .balance
+{
+  padding: 10px;
+  margin-top:10px;
+  margin-bottom:10px;
+  display: inline-block;
+  width: 48%;
+  background: rgba(240,158,0,.5);
+}
+.baits_balance .baits
+{
+  margin-left:3px;
+}
+.baits_balance .baits .title,
+.baits_balance .balance .title
+{
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color:rgb(149,94,1);
+}
+
+.baits_balance .baits .remaining,
+.baits_balance .balance .remaining
+{
+  text-align:center;
+  color:rgb(149,94,1);
+
+}

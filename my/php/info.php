@@ -11,6 +11,8 @@ $user->set('gender','女');
 $user->set('QQ','2559837097');
 $user->set('tel','131--------');
 $user->set('wechat','wangxin');
+$user->set('baits','233');
+$user->set('balance',0);
 
 
 
@@ -36,10 +38,10 @@ $user->set('wechat','wangxin');
      <div class="row">
        <div class="col-sm-2">
          <div class="list-group side-bar-left">
-           <a href="my.html" class="list-group-item active">全部功能</a>
+           <a href="my.php" class="list-group-item active">全部功能</a>
            <a href="#" class="list-group-item">我的购物车</a>
            <a href="#" class="list-group-item">进行中的课程</a>
-           <a href="shoppingHistory.html" class="list-group-item">历史订单</a>
+           <a href="shoppingHistory.php" class="list-group-item">历史订单</a>
            <a href="#" class="list-group-item">我的评价</a>
            <a href="#" class="list-group-item">个人信息</a>
            <a href="#" class="list-group-item">我的收藏</a>
@@ -122,7 +124,7 @@ $user->set('wechat','wangxin');
 
             <div class="input-wrap">
               <label for="QQ">QQ：</label>
-              <input class="form-control" type="text" name="QQ" value=<?php echo $user->get('QQ') ?>>
+              <input class="form-control" type="number" name="QQ" value=<?php echo $user->get('QQ') ?>>
             </div>
 
             <div class="input-wrap">
@@ -130,8 +132,10 @@ $user->set('wechat','wangxin');
               <input class="form-control" type="text" name="wechat" value=<?php echo $user->get('wechat') ?>>
             </div>
 
-
-
+            <div class="input-wrap">
+              <label for="email">邮箱：</label>
+              <input class="form-control" type="email" name="email" value=<?php echo $user->get('email') ?>>
+            </div>
 
 
             <button type="button" name="alterInfo" class='btn btn-default'>修改信息</button>
@@ -141,6 +145,28 @@ $user->set('wechat','wangxin');
        </div>
 
        <div class="col-sm-3">
+         <div class="baits_balance">
+           <div class="baits">
+             <div class="title">
+               我的鱼饵
+             </div>
+             <div class="remaining">
+               <?php
+               echo $user->get('baits');
+                ?>
+             </div>
+           </div>
+           <div class="balance">
+             <div class="title">
+               我的余额
+             </div>
+             <div class="remaining">
+               <?php
+               echo $user->get('balance');
+                ?>
+             </div>
+           </div>
+         </div>
          <div class="calendar">
            <div class="year">2018 年</div><div class="month">11 月</div>
            <div class="day">

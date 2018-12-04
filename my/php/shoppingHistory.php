@@ -1,11 +1,21 @@
 <?php
 
 include 'UserInfo.php';
+//测试
 $time = time()+24*60*60;
 setCookie("uid", '1000', $time, "/"); //设置COOKIE
 setCookie("username", 'karen', $time, "/"); //设置一个用户名COOKIE
 setCookie("isLogin", 1, $time, "/");
+
 $user = new UserInfo();
+$user->set('gender','女');
+$user->set('QQ','2559837097');
+$user->set('tel','131--------');
+$user->set('wechat','wangxin');
+$user->set('baits','233');
+$user->set('balance',0);
+
+
 $history = $user->getHistory();
  ?>
 
@@ -33,7 +43,7 @@ $history = $user->getHistory();
           <a href="#" class="list-group-item">进行中的课程</a>
           <a href="#" class="list-group-item active">历史订单</a>
           <a href="#" class="list-group-item">我的评价</a>
-          <a href="#" class="list-group-item">个人信息</a>
+          <a href="info.php" class="list-group-item">个人信息</a>
           <a href="#" class="list-group-item">我的收藏</a>
           <a href="#" class="list-group-item">我的足迹</a>
         </div>
@@ -74,6 +84,28 @@ $history = $user->getHistory();
       </div>
 
       <div class="col-sm-3">
+        <div class="baits_balance">
+          <div class="baits">
+            <div class="title">
+              我的鱼饵
+            </div>
+            <div class="remaining">
+              <?php
+              echo $user->get('baits');
+               ?>
+            </div>
+          </div>
+          <div class="balance">
+            <div class="title">
+              我的余额
+            </div>
+            <div class="remaining">
+              <?php
+              echo $user->get('balance');
+               ?>
+            </div>
+          </div>
+        </div>
         <div class="calendar">
           <div class="year"><?php echo date("Y")," 年"; ?></div><div class="month"><?php echo date("m")," 月"; ?></div>
           <div class="day">

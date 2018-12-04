@@ -7,6 +7,14 @@ setCookie("username", 'karen', $time, "/"); //设置一个用户名COOKIE
 setCookie("isLogin", 1, $time, "/");
 
 $user = new UserInfo();
+$user->set('gender','女');
+$user->set('QQ','2559837097');
+$user->set('tel','131--------');
+$user->set('wechat','wangxin');
+$user->set('baits','233');
+$user->set('balance',0);
+
+
  ?>
 
 
@@ -95,6 +103,28 @@ $user = new UserInfo();
        </div>
 
        <div class="col-sm-3">
+         <div class="baits_balance">
+           <div class="baits">
+             <div class="title">
+               我的鱼饵
+             </div>
+             <div class="remaining">
+               <?php
+               echo $user->get('baits');
+                ?>
+             </div>
+           </div>
+           <div class="balance">
+             <div class="title">
+               我的余额
+             </div>
+             <div class="remaining">
+               <?php
+               echo $user->get('balance');
+                ?>
+             </div>
+           </div>
+         </div>
          <div class="calendar">
            <div class="year"><?php echo date("Y")," 年"; ?></div><div class="month"><?php echo date("m")," 月"; ?></div>
            <div class="day">
