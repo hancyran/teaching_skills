@@ -1,20 +1,47 @@
+<?php include "../php/DB.php" ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8" />
 		<title>搜索页</title>
 		<script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
-		<script type="text/javascript" src="js/script.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/public.css"/>
-		<link rel="stylesheet" type="text/css" href="css/proList.css"/>
+		<script type="text/javascript" src="../js/search.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/proList.css"/>
 	</head>
 	<body>
-		<!------------------------------head------------------------------>
-		<div class="head ding">
-			<h1>授渔</h1>
+		<!--head-->
+		<div class="nav">
+			<div class="menu">
+				<div class="menu_icon" onclick="menu_slide(this)">
+					<div class="bar1"></div>
+					<div class="bar2"></div>
+					<div class="bar3"></div>
+				</div>
+			</div>
+			<div class="search">
+				<i class="fas fa-search fa-2x" onclick="toggleSearch()"></i>
+				<form class="search_form" action="php/search.php" method="get">
+					<input type="text" name="search_key" placeholder="请输入课程关键字" id="search_key">
+				</form>
+			</div>
+			<div class="logo">
+				授渔
+			</div>
+			<div class="self">
+				<div class="login">
+					<a id="login" href="#login">登录</a>
+				</div>
+				<div class="signup">
+					<a id="signup" href="#signup">注册</a>
+				</div>
+				<div class="cart" onclick="">
+					<span id="count">0</span>
+				</div>
+			</div>
 		</div>
-			
-		<!------------------------------搜索列表------------------------------>
+
+		<!--搜索列表-->
 		<div class="schBox">
 			<ul class="select">
 	       		<li class="select-list">
@@ -59,13 +86,13 @@
 				</li>
 			</ul>
 		</div>
-		<!-------------------current---------------------->
+		<!--current-->
 		<div class="current">
 			<div class="index clearfix">
-				<h3 class="fl">搜索结果：</h3> 
+				<h3 class="fl">搜索结果：</h3>
 			</div>
 		</div>
-		<!----------------proList------------------------->
+		<!--proList--->
 		<ul class="proList wrapper clearfix">
 			<li>
 				<a href="#">
