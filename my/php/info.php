@@ -14,10 +14,7 @@ $user->set('wechat','wangxin');
 $user->set('baits','233');
 $user->set('balance',0);
 $user->set('email','123@123.com');
-
-
-
-
+$user->set('school','2');
 
  ?>
 
@@ -47,7 +44,7 @@ $user->set('email','123@123.com');
            <a href="#" class="list-group-item">我的评价</a>
            <a href="#" class="list-group-item  active">个人信息</a>
            <a href="#" class="list-group-item">我的收藏</a>
-          
+
          </div>
        </div>
 
@@ -108,7 +105,11 @@ $user->set('email','123@123.com');
 
             <div class="input-wrap">
               <label for="gender">性别：</label>
-              <input class="input-control" type="text" name="gender" value=<?php echo $user->get('gender') ?>>
+              <select class="input-control" id="genderSelect"  name="gender">
+                <option value='男' >男</option>
+                <option value='女'>女</option>
+              </select>
+
             </div>
 
             <div class="input-wrap">
@@ -188,7 +189,11 @@ $user->set('email','123@123.com');
        </div>
 
    </div>
-   <script src="../js/jquery-3.3.1.min.js" charset="utf-8"></script>
+  <script src="../js/jquery-3.3.1.min.js" charset="utf-8"></script>
   <script src="../js/my.js" charset="utf-8"></script>
+  <script type="text/javascript">
+  $("#genderSelect  option[value=<?php echo $user->get('gender'); ?>] ").attr("selected",true);
+  $("#schoolSelect  option[value=<?php echo $user->get('school'); ?>] ").attr("selected",true);
+  </script>
  </body>
  </html>
