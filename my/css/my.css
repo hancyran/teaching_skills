@@ -5,14 +5,15 @@
 
 a.active
 {
-  background: #bbb !important;
+  background: rgba(118,211,221,.8)!important;
   border: 0;
+  color:#fff;
 }
 
 
 .col-sm-7 .header
 {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(118,211,221,.1);
 }
 .col-sm-7 .header a.avator
 {
@@ -37,7 +38,7 @@ a.active
 
 .col-sm-7 .header .info
 {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(118,211,221,.3);
   border-bottom: 1px solid #eee;
 }
 
@@ -68,17 +69,31 @@ a.active
 {
   padding: 10px;
   margin: 10px 0;
-  background: rgba(0, 0, 0, 0.1);
+  /* background: rgba(0, 0, 0, 0.01); */
 }
 .col-sm-7 .content .title
 {
-  background: rgba(0, 0, 0, 0.2);
+  /* background: rgba(0, 0, 0, 0.2); */
+  background: rgba(118,211,221,.8);
+  color:#fff;
 }
 
 .col-sm-7 .content .browsingHistory
 {
-  background: rgba(0, 0, 0, 0.1);
+  /* background: rgba(0, 0, 0, 0.1); */
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: 150px 150px 150px;
+  /* grid-template-rows: 100px 100px 100px; */
+
 }
+.col-sm-7 .content .browsingHistory .box
+{
+  background-color: rgba(118,211,221,.3);
+  color: #fff;
+  margin:5px;
+}
+
 .col-sm-3
 {
   /* background: rgba(0, 0, 0, 0.1); */
@@ -90,7 +105,7 @@ a.active
 .col-sm-3 .feedback
 {
   margin: 10px 0;
-  background: rgba(0, 0, 0, 0.1);
+  /* background: rgba(0, 0, 0, 0.1); */
 
 }
 .col-sm-3 .calendar
@@ -210,4 +225,29 @@ button[name="submit"]
   text-align:center;
   color:rgb(149,94,1);
 
+}
+.info
+{
+  /* background: #fff; */
+}
+.info .input-control
+{
+  width: 100%;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+
+  height: 35px;
+  margin-bottom: 5px;
+
+}
+.info .input-control:disabled
+{
+
+  background: #fff;
+  border-bottom: 0;
+}
+.info .input-control:focus
+{
+  border-bottom: 1px solid #999;
 }

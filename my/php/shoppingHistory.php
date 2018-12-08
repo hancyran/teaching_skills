@@ -45,7 +45,7 @@ $history = $user->getHistory();
           <a href="#" class="list-group-item">我的评价</a>
           <a href="info.php" class="list-group-item">个人信息</a>
           <a href="#" class="list-group-item">我的收藏</a>
-          <a href="#" class="list-group-item">我的足迹</a>
+        
         </div>
       </div>
 

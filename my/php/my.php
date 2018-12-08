@@ -44,7 +44,7 @@ $user->set('balance',0);
            <a href="#" class="list-group-item">我的评价</a>
            <a href="info.php" class="list-group-item">个人信息</a>
            <a href="#" class="list-group-item">我的收藏</a>
-           <a href="#" class="list-group-item">我的足迹</a>
+          
          </div>
        </div>
 
@@ -97,7 +97,27 @@ $user->set('balance',0);
              我的足迹
            </div>
            <div class="browsingHistory">
-             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+             <div class="box">
+              1
+             </div>
+             <div class="box">
+               2
+             </div>
+             <div class="box">
+               3
+             </div>
+             <div class="box">
+               3
+             </div>
+             <div class="box">
+               3
+             </div>
+             <div class="box">
+               3
+             </div>
+             <div class="box">
+               3
+             </div>
            </div>
          </div>
        </div>
