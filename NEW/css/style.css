@@ -125,7 +125,6 @@ ol {
 }
 
 .main-gradient,
-.site-btn:after,
 .accordion-area .panel-header .panel-link.active,
 .tab-element .nav-tabs .nav-link.active,
 .header-warp,
@@ -204,7 +203,8 @@ ol {
 
 .site-btn.btn-2:after,
 .site-btn.btn-3:after,
-.site-btn.btn-4:after {
+.site-btn.btn-4:after
+ {
 	display: none;
 }
 
@@ -901,6 +901,13 @@ ol {
 .footer-section {
 	background: #2980B9;
 	overflow: hidden;
+}
+
+.text-center .site-btn{
+	background: #2980B9 ;
+	background: -webkit-linear-gradient(to right, #2980B9, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #2980B9, #6DD5FA, #2980B9);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7076fc', endColorstr='#185dd0', GradientType=0);
 }
 
 .footer-widget h4 {
