@@ -1,11 +1,3 @@
-/* =================================
-------------------------------------
-  Academica - Learning Page Template
-  Version: 1.0
- ------------------------------------ 
- ====================================*/
-
-
 /*----------------------------------------*/
 /* Template default CSS
 /*----------------------------------------*/
@@ -145,9 +137,9 @@ ol {
 	/* Old browsers */
 	/* FF3.6-15 */
 	/* Chrome10-25,Safari5.1-6 */
-	background: -webkit-gradient(linear, left top, right top, from(#185dd0), to(#7076fc));
-	background: -o-linear-gradient(left, #185dd0 0%, #7076fc 100%);
-	background: linear-gradient(to right, #185dd0 0%, #7076fc 100%);
+	background: #2980B9;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#185dd0', endColorstr='#7076fc', GradientType=1);
 	/* IE6-9 */
@@ -163,9 +155,9 @@ ol {
 	/* Old browsers */
 	/* FF3.6-15 */
 	/* Chrome10-25,Safari5.1-6 */
-	background: -webkit-gradient(linear, left top, left bottom, from(#7076fc), to(#185dd0));
-	background: -o-linear-gradient(top, #7076fc 0%, #185dd0 100%);
-	background: linear-gradient(to bottom, #7076fc 0%, #185dd0 100%);
+	background: #2980B9;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7076fc', endColorstr='#185dd0', GradientType=0);
 	/* IE6-9 */
@@ -403,7 +395,7 @@ ol {
 	width: 1240px;
 	margin: 0 auto;
 	overflow: overlay;
-	padding: 50px 0;
+	padding: 30px 0;
 	border-bottom: 3px solid #f3e830;
 }
 
@@ -413,6 +405,7 @@ ol {
 	font-weight: 600;
 	font-size: 16px;
 	margin-left: 120px;
+	margin-top: 14px;
 	padding: 10px 0;
 }
 
@@ -440,6 +433,7 @@ ol {
 .main-menu {
 	float: right;
 	list-style: none;
+	margin-top: 14px;
 }
 
 .main-menu li {
@@ -520,7 +514,7 @@ ol {
 	width: 1240px;
 	margin: 0 auto;
 	overflow: overlay;
-	background: #1d1d1d;
+	background: #050505;
 	padding-top: 40px;
 	padding-bottom: 35px;
 }
@@ -905,7 +899,7 @@ ol {
 ---------------------*/
 
 .footer-section {
-	background: #1d1d1d;
+	background: #2980B9;
 	overflow: hidden;
 }
 
@@ -936,6 +930,7 @@ ol {
 }
 
 .footer-menu {
+	margin-top: 30px;
 	float: right;
 	list-style: none;
 }
@@ -968,6 +963,7 @@ ol {
 	float: right;
 	margin-left: 80px;
 	padding-top: 7px;
+	margin-top: 30px;
 }
 
 .footer-bottom .social a {
