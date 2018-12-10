@@ -30,7 +30,9 @@ $user->set('balance',0);
  </head>
  <body>
    <div class="navbar navbar-default">
-
+     <div class="logo">
+       授  渔
+     </div>
    </div>
 
    <div class="container">
