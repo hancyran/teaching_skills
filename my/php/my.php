@@ -1,11 +1,11 @@
 <?php
-include 'UserInfo.php';
 //测试
 $time = time()+24*60*60;
 setCookie("uid", '1000', $time, "/"); //设置COOKIE
 setCookie("username", 'karen', $time, "/"); //设置一个用户名COOKIE
 setCookie("isLogin", 1, $time, "/");
 
+include 'UserInfo.php';
 $user = new UserInfo();
 $user->set('gender','女');
 $user->set('QQ','2559837097');
@@ -44,7 +44,7 @@ $user->set('balance',0);
            <a href="#" class="list-group-item">我的评价</a>
            <a href="info.php" class="list-group-item">个人信息</a>
            <a href="#" class="list-group-item">我的收藏</a>
-          
+
          </div>
        </div>
 
