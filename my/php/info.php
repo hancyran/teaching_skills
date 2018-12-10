@@ -13,10 +13,10 @@ $user->set('tel','131--------');
 $user->set('wechat','wangxin');
 $user->set('baits','233');
 $user->set('balance',0);
-
+$user->set('email','123@123.com');
+$user->set('school','2');
 
  ?>
-
 
  <!DOCTYPE html>
  <html lang="en">
@@ -37,14 +37,14 @@ $user->set('balance',0);
      <div class="row">
        <div class="col-sm-2">
          <div class="list-group side-bar-left">
-           <a href="my.html" class="list-group-item active">全部功能</a>
+           <a href="my.php" class="list-group-item">全部功能</a>
            <a href="#" class="list-group-item">我的购物车</a>
            <a href="#" class="list-group-item">进行中的课程</a>
            <a href="shoppingHistory.php" class="list-group-item">历史订单</a>
            <a href="#" class="list-group-item">我的评价</a>
-           <a href="info.php" class="list-group-item">个人信息</a>
+           <a href="#" class="list-group-item  active">个人信息</a>
            <a href="#" class="list-group-item">我的收藏</a>
-          
+
          </div>
        </div>
 
@@ -68,6 +68,7 @@ $user->set('balance',0);
                  </div>
                </div>
              </div>
+
            </div>
 
 
@@ -94,31 +95,55 @@ $user->set('balance',0);
 
          <div class="content">
            <div class="title">
-             我的足迹
+             我的信息
            </div>
-           <div class="browsingHistory">
-             <div class="box">
-              1
-             </div>
-             <div class="box">
-               2
-             </div>
-             <div class="box">
-               3
-             </div>
-             <div class="box">
-               3
-             </div>
-             <div class="box">
-               3
-             </div>
-             <div class="box">
-               3
-             </div>
-             <div class="box">
-               3
-             </div>
-           </div>
+          <form class="info" action="changeInfo.php" method="post">
+            <div class="input-wrap">
+              <label for="username">用户名：</label>
+              <input class="input-control" type="text" name="username"  value=<?php echo $user->get('username') ?>>
+            </div>
+
+            <div class="input-wrap">
+              <label for="gender">性别：</label>
+              <select class="input-control" id="genderSelect"  name="gender">
+                <option value='男' >男</option>
+                <option value='女'>女</option>
+              </select>
+
+            </div>
+
+            <div class="input-wrap">
+              <label for="school">学校：</label>
+              <select class="input-control" id="schoolSelect" name="school">
+                <option value="1">北京大学</option>
+                <option value="2">北京航空航天大学</option>
+              </select>
+            </div>
+
+            <div class="input-wrap">
+              <label for="tel">电话：</label>
+              <input class="input-control" type="text" name="tel" value=<?php echo $user->get('tel') ?>>
+            </div>
+
+            <div class="input-wrap">
+              <label for="QQ">QQ：</label>
+              <input class="input-control" type="number" name="QQ" value=<?php echo $user->get('QQ') ?>>
+            </div>
+
+            <div class="input-wrap">
+              <label for="wechat">微信：</label>
+              <input class="input-control" type="text" name="wechat" value=<?php echo $user->get('wechat') ?>>
+            </div>
+
+            <div class="input-wrap">
+              <label for="email">邮箱：</label>
+              <input class="input-control" type="email" name="email" value=<?php echo $user->get('email') ?>>
+            </div>
+
+
+            <button type="button" name="alterInfo" class='btn btn-default'>修改信息</button>
+            <button type="submit" name="submit" class='btn btn-primary disabled'>提交</button>
+          </form>
          </div>
        </div>
 
@@ -164,7 +189,11 @@ $user->set('balance',0);
        </div>
 
    </div>
-
- <script src="js/main.js" charset="utf-8"></script>
+  <script src="../js/jquery-3.3.1.min.js" charset="utf-8"></script>
+  <script src="../js/my.js" charset="utf-8"></script>
+  <script type="text/javascript">
+  $("#genderSelect  option[value=<?php echo $user->get('gender'); ?>] ").attr("selected",true);
+  $("#schoolSelect  option[value=<?php echo $user->get('school'); ?>] ").attr("selected",true);
+  </script>
  </body>
  </html>
