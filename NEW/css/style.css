@@ -535,7 +535,7 @@ ol {
 }
 
 .multi-search-form input:nth-child(1) {
-	width: calc(14.7% - 18px);
+	width: calc(23% - 18px);
 	padding-left: 24px;
 }
 
@@ -555,9 +555,8 @@ ol {
 }
 
 .multi-search-form input:nth-child(5) {
-	width: calc(23% - 18px);
+	width: calc(14.7% - 18px);
 	padding-left: 20px;
-	margin-right: 0 !important;
 }
 
 /*------------------
