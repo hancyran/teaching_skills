@@ -74,6 +74,7 @@ create table order_info(
   id varchar(30),
   cid varchar(20) not null,
   class_name varchar(20) not null,
+  description varchar(100) not null,
   school_id varchar(50) not null,
   campus_id varchar(50) not null,
   seller_id varchar(50) not null,

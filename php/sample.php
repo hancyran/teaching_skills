@@ -14,6 +14,8 @@ $db_conn->query($sq);
 print_r($db_conn->result);//result: PDOStatement Object ( [queryString] => select * from course_info )
 echo "<br>";
 //
+print_r($db_conn->query($sq));//result: PDOStatement Object ( [queryString] => select * from course_info )
+echo "<br>";
 //sample for getRow()
 $row= $db_conn->getRow();
 print_r($row);// or just use $db_conn->row
@@ -47,4 +49,3 @@ print_r($db_conn->execute($arr));
 //finally, NOTE: dont forget to close the db_conn info
 $db_conn->close();
 ?>
-
