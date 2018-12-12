@@ -61,12 +61,12 @@
 		<div class="msf-warp">
 			<div class="container">
 				<h5>查询课程</h5>
-				<form class="multi-search-form">
-					<input type="text" name="city" placeholder="所在城市">
-					<input type="text" name="district" placeholder="所在地区">
-					<input type="text" name="teacher" placeholder="授课人">
-					<input type="text" name="price" placeholder="价格">
-					<input type="text" name="course" placeholder="课程关键字">
+				<form class="multi-search-form" action="courses.php">
+					<input type="text" placeholder="所在城市">
+					<input type="text" placeholder="所在地区">
+					<input type="text" placeholder="授课人">
+					<input type="text" placeholder="价格">
+					<input type="text" name="course" placeholder="课程关键字" autocomplete="course">
 					<button class="site-btn">查询<i class="fa fa-angle-right"></i></button>
 				</form>
 			</div>
@@ -330,7 +330,7 @@
 				</ul>
 				<div class="footer-logo">
 					<a href="#">
-						<img src="img/logo.png" style="width:150px">
+						<img src="img/Wlogo.png" style="width:150px">
 					</a>
 				</div>
 			</div>

@@ -210,7 +210,7 @@ $num_result= $search->getSearchResultNum();
 				</ul>
 				<div class="footer-logo">
 					<a href="#">
-						<img src="img/logo.png" style="width:150px">
+						<img src="img/Wlogo.png" style="width:150px">
 					</a>
 				</div>
 			</div>
