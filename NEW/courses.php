@@ -101,6 +101,7 @@ $num_result= $search->getSearchResultNum();
 					$course= $search->seller_course;
 					$seller_school= $search->seller_school;
 					$seller_city= $search->seller_city;
+					$visit_time= $search->
 				?>
 				<!-- course -->
 				<div class="col-lg-4 col-md-6">
@@ -118,8 +119,8 @@ $num_result= $search->getSearchResultNum();
 								<h5>&nbsp;</h5>
 								<!-- description -->
 								<p>为那些想要入门设计或是对于ps日常应用比较热爱的同学准备</p>
-								<span><i class="flaticon-student-2"></i>已售课数 20</span>
-								<span><i class="flaticon-placeholder"></i>浏览数 100</span>
+								<span><i class="flaticon-student-2"></i>已售课时 20</span>
+								<span><i class="flaticon-placeholder"></i>浏览数 <?php echo $course['visit_time'] ?></span>
 								<!-- course rate -->
 								<div class="rating">
 									<i class="fa fa-star"></i>

@@ -225,3 +225,7 @@ $seller_money_history$ language plpgsql;
 create trigger log_seller_moneyhistory
   after update on seller_info
   for each row execute procedure log_seller_money_history();
+
+
+
+/*---------------logging for user to change info-------------------------------------*/

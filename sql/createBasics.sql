@@ -97,6 +97,8 @@ create table order_info(
   visibility char(1) default '1' check (visibility in ('0', '1')), /*商品是否可见： 0 -> 不可见 , 1 -> 可见*/
   create_date timestamp default current_timestamp,
   last_update_date timestamp default current_timestamp,
+  visit_time int default 0, /*商品访问次数*/
+  last_visit_date timestamp, /*最后的访问时间*/
   primary key(id),
   foreign key(cid) references course_info(id),
   foreign key(seller_id) references seller_info(id),
@@ -106,7 +108,6 @@ create table order_info(
 
 
 /*-------------create triggers to update date from each table after modifying--------------*/
-
 
 
 /*function to update the last_update_date in order_info table*/
@@ -122,6 +123,7 @@ create trigger update_userinfo_date
 before update on user_info for each row
 execute procedure update_date_userinfo();
 
+
 /*function to update the last_update_date in order_info table*/
 create or replace function update_date_course()
 returns trigger as $$
@@ -135,6 +137,7 @@ create trigger update_course_date
 before update on course_info for each row
 execute procedure update_date_course();
 
+
 /*function to update the last_update_date in order_info table */
 create or replace function update_date_order()
 returns trigger as $$
@@ -147,3 +150,19 @@ $$ language 'plpgsql';
 create trigger update_order_date
 before update on order_info for each row
 execute procedure update_date_order();
+
+
+/*function to update the last_update_date in order_info table */
+create or replace function update_order_last_visitdate()
+returns trigger as $$
+begin
+    if (old.visit_time+1 = new.visit_time) then
+      new.last_visit_date= now();
+    end if;
+    return new;
+end;
+$$ language 'plpgsql';
+/*trigger to update last_update_date after a update statement execute */
+create trigger update_order_visitdate
+before update on order_info for each row
+execute procedure update_order_last_visitdate();
