@@ -42,14 +42,14 @@ create table course_info(
 create table user_info(
   id serial, /*用户id*/
   username varchar(20) not null, /*用户名（可用于登录时身份验证）*/
-  gender varchar(5) default 'none', /*用户性别*/
+  gender varchar(5) default 'none', /*用户性别: f -> 女性， m -> 男性*/
   tel varchar(20), /*用户电话*/
   wechat varchar(50), /*用户微信*/
   qq varchar(20), /*用户qq*/
   school_id int, /*用户所在学校id*/
   campus_id int, /*用户所在校区id*/
   major varchar(20), /*用户的专业*/
-  balance int check (balance >= 0),
+  balance int check (balance >= 0), /*用户的钱包存款*/
   verification varchar(10), /*是否验证为卖家*/
   create_date timestamp default current_timestamp, /*用户创建时间*/
   last_update_date timestamp default current_timestamp, /*用户信息更新时间*/
@@ -73,7 +73,7 @@ create table seller_info(
   real_school_id int, /*卖家真实的学校id*/
   real_campus_id int, /*卖家真实的校区id*/
   real_stu_id varchar(40), /*卖家的真实学号*/
-  balance int check (balance >= 0),
+  balance int check (balance >= 0), /*卖家的账户存款*/
   create_date timestamp default current_timestamp, /*卖家的创建时间*/
   primary key(id),
   foreign key(uid) references user_info(id),
