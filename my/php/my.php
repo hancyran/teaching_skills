@@ -39,13 +39,14 @@ $user->set('balance',0);
      <div class="row">
        <div class="col-sm-2">
          <div class="list-group side-bar-left">
-           <a href="my.html" class="list-group-item active">全部功能</a>
+           <a href="#s" class="list-group-item active">全部功能</a>
            <a href="#" class="list-group-item">我的购物车</a>
            <a href="#" class="list-group-item">进行中的课程</a>
            <a href="shoppingHistory.php" class="list-group-item">历史订单</a>
            <a href="#" class="list-group-item">我的评价</a>
            <a href="info.php" class="list-group-item">个人信息</a>
            <a href="#" class="list-group-item">我的收藏</a>
+           <a href="identification.php" class="list-group-item">信息认证</a>
 
          </div>
        </div>

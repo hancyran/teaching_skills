@@ -1,4 +1,5 @@
 <?php
+//测试
 include 'UserInfo.php';
 //测试
 $time = time()+24*60*60;
@@ -25,7 +26,9 @@ function getInfo($prop,$obj)
     return '/';
   }
 }
+
  ?>
+
 
  <!DOCTYPE html>
  <html lang="en">
@@ -53,9 +56,9 @@ function getInfo($prop,$obj)
            <a href="#" class="list-group-item">进行中的课程</a>
            <a href="shoppingHistory.php" class="list-group-item">历史订单</a>
            <a href="#" class="list-group-item">我的评价</a>
-           <a href="#" class="list-group-item  active">个人信息</a>
+           <a href="info.php" class="list-group-item">个人信息</a>
            <a href="#" class="list-group-item">我的收藏</a>
-           <a href="identification.php" class="list-group-item">信息认证</a>
+           <a href="#" class="list-group-item active">信息认证</a>
 
          </div>
        </div>
@@ -80,7 +83,6 @@ function getInfo($prop,$obj)
                  </div>
                </div>
              </div>
-
            </div>
 
 
@@ -108,20 +110,13 @@ function getInfo($prop,$obj)
          <div class="content">
            <div class="title">
              我的信息
+             <span>*信息认证将影响到授课的正常进行请认真填写！</span>
            </div>
+
           <form class="info" action="changeInfo.php" method="post">
             <div class="input-wrap">
-              <label for="username">用户名：</label>
-              <input class="input-control" type="text" name="username"  value=<?php echo   getInfo('username',$user); ?>>
-            </div>
-
-            <div class="input-wrap">
-              <label for="gender">性别：</label>
-              <select class="input-control" id="genderSelect"  name="gender">
-                <option value='男' >男</option>
-                <option value='女'>女</option>
-              </select>
-
+              <label for="username">真实姓名：</label>
+              <input class="input-control" type="text" name="username"  value=<?php  ?>>
             </div>
 
             <div class="input-wrap">
@@ -133,30 +128,24 @@ function getInfo($prop,$obj)
             </div>
 
             <div class="input-wrap">
-              <label for="tel">电话：</label>
-              <input class="input-control" type="text" name="tel" value=<?php  echo getInfo('tel',$user); ?>>
+              <label for="username">学号：</label>
+              <input class="input-control" type="text" name="username"  value=<?php  ?>>
             </div>
 
             <div class="input-wrap">
-              <label for="QQ">QQ：</label>
-              <input class="input-control" type="number" name="QQ" value=<?php echo   getInfo('QQ',$user); ?>>
+              <label for="tel">真实电话：</label>
+              <input class="input-control" type="text" name="tel" value=<?php echo $user->get('tel') ?>>
             </div>
 
             <div class="input-wrap">
               <label for="wechat">微信：</label>
-              <input class="input-control" type="text" name="wechat" value=<?php echo   getInfo('wechat',$user); ?>>
+              <input class="input-control" type="text" name="wechat" value=<?php echo $user->get('wechat') ?>>
             </div>
-
-            <div class="input-wrap">
-              <label for="email">邮箱：</label>
-              <input class="input-control" type="email" name="email" value=<?php echo   getInfo('email',$user); ?>>
-            </div>
-
 
             <button type="button" name="alterInfo" class='btn btn-default'>修改信息</button>
             <button type="submit" name="submit" class='btn btn-primary disabled'>提交</button>
-          </form>
          </div>
+
        </div>
 
        <div class="col-sm-3">
@@ -201,11 +190,11 @@ function getInfo($prop,$obj)
        </div>
 
    </div>
-  <script src="../js/jquery-3.3.1.min.js" charset="utf-8"></script>
-  <script src="../js/my.js" charset="utf-8"></script>
-  <script type="text/javascript">
-  $("#genderSelect  option[value=<?php echo $user->get('gender'); ?>] ").attr("selected",true);
-  $("#schoolSelect  option[value=<?php echo $user->get('school'); ?>] ").attr("selected",true);
-  </script>
+
+   <script src="../js/jquery-3.3.1.min.js" charset="utf-8"></script>
+   <script src="../js/my.js" charset="utf-8"></script>
+   <script type="text/javascript">
+   $("#schoolSelect  option[value=<?php echo $user->get('school'); ?>] ").attr("selected",true);
+   </script>
  </body>
  </html>

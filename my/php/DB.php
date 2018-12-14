@@ -3,8 +3,8 @@ class DB{
   public static $host= "localhost";
   public static $port= "5432";
   public static $dbname= "test";
-  public static $username= "haoxiran";
-  public static $password= "password";
+  public static $username= "postgres";
+  public static $password= "123456";
   public $result;
   public $db;
   public $row;
