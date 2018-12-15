@@ -32,6 +32,7 @@ create table seller_mdf_order_log(
   foreign key(seller_id) references seller_info(id),
   foreign key(order_id) references order_info(id)
 );
+alter table seller_mdf_order_log alter id set default nextval('seller_mdf_order_log_id_seq');
 /*function*/
 create or replace function log_mdf_orderinfo()
 returns trigger as $seller_mdf_order_log$
@@ -80,6 +81,8 @@ create table dba_mdf_course_log(
   operate_time timestamp default current_timestamp,
   primary key(id)
 );
+alter table dba_mdf_course_log alter id set default nextval('dba_mdf_course_log_id_seq');
+
 /*function to log the modified info from course_info*/
 create or replace function log_mdf_courseinfo()
 returns trigger as $dba_mdf_course_log$
@@ -127,6 +130,7 @@ create table dba_mdf_school_log(
   operate_time timestamp default current_timestamp,
   primary key(id)
 );
+alter table dba_mdf_school_log alter id set default nextval('dba_mdf_school_log_id_seq');
 /*function to log the modified info from course_info*/
 create or replace function log_mdf_schoolinfo()
 returns trigger as $dba_mdf_school_log$
@@ -171,6 +175,7 @@ create table user_money_history(
   primary key(id),
   foreign key(user_id) references user_info(id)
 );
+alter table user_money_history alter id set default nextval('user_money_history_id_seq');
 /*function*/
 create or replace function log_user_money_history()
 returns trigger as $user_money_history$
@@ -207,6 +212,7 @@ create table seller_money_history(
   primary key(id),
   foreign key(seller_id) references seller_info(id)
 );
+alter table seller_money_history alter id set default nextval('seller_money_history_id_seq');
 /*function*/
 create or replace function log_seller_money_history()
 returns trigger as $seller_money_history$

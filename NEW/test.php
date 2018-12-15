@@ -17,6 +17,4 @@ if ($start_order+9 >= $num_result) {
 else {
 	$end_order= $start_order + 9;
 }
-
-echo $start_order."<br>".$end_order;
 ?>

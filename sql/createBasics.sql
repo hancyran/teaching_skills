@@ -38,6 +38,7 @@ create table course_info(
   last_update_date timestamp default current_timestamp, /*最后更新时间*/
   primary key(id)
 );
+alter table course_info alter id set default nextval('course_info_id_seq');
 /*user infomation*/
 create table user_info(
   id serial, /*用户id*/
@@ -57,6 +58,7 @@ create table user_info(
   primary key(id),
   foreign key(school_id,campus_id) references school_info(school_id, campus_id)
 );
+alter table user_info alter id set default nextval('user_info_id_seq');
 create table account(
   id serial, /*用户登录的唯一id*/
   user_id int, /*用户登录后关联的用户id*/
@@ -66,6 +68,7 @@ create table account(
   primary key(id),
   foreign key(user_id) references user_info(id)
 );
+alter table account alter id set default nextval('account_id_seq');
 /*seller info*/
 create table seller_info(
   id serial, /*卖家id*/
@@ -82,6 +85,7 @@ create table seller_info(
   foreign key(uid) references user_info(id),
   foreign key(real_school_id,real_campus_id) references school_info(school_id, campus_id)
 );
+alter table seller_info alter id set default nextval('seller_info_id_seq');
 /*course infomation*/
 create table order_info(
   id bigserial/* '商品id' */,
@@ -110,7 +114,7 @@ create table order_info(
   foreign key(buyer_id) references user_info(id),
   foreign key(school_id,campus_id) references school_info(school_id, campus_id)
 );
-
+alter table order_info alter id set default nextval('order_info_id_seq');
 
 /*-------------create triggers to update date from each table after modifying--------------*/
 
