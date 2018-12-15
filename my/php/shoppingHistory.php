@@ -28,15 +28,32 @@ $history = $user->getHistory();
   <title>历史订单</title>
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/my.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <div class="navbar navbar-default">
-    <div class="logo">
-      授  渔
+  <header class="header-section narrow">
+    <div class="header-warp narrow-warp">
+      <div class="container wide-container">
+        <a href="./" class="site-logo">
+          <img src="../img/logo.png" style="width:100px">
+        </a>
+        <div class="user-panel">
+          <a href="#">登录</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">注册</a>
+        </div>
+        <div class="nav-switch">
+          <i class="fa fa-bars"></i>
+        </div>
+        <ul class="main-menu">
+          <li><a href="about.html">关于我们</a></li>
+          <li><a href="courses.php?course=&page=1">课程总览</a></li>
+          <li><a href="blog.html">新闻中心</a></li>
+          <li><a href="contact.html">联系方式</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </header>
 
-  <div class="container">
+  <div class="container main-container">
     <div class="row">
       <div class="col-sm-2">
         <div class="list-group side-bar-left">
@@ -47,7 +64,7 @@ $history = $user->getHistory();
           <a href="#" class="list-group-item">我的评价</a>
           <a href="info.php" class="list-group-item">个人信息</a>
           <a href="#" class="list-group-item">我的收藏</a>
-          <a href="identification.php"" class="list-group-item">信息认证</a>
+          <a href="identification.php" class="list-group-item">信息认证</a>
 
         </div>
       </div>
@@ -69,10 +86,10 @@ $history = $user->getHistory();
                   </div>
                   <div class="course-detail">
                     <div class="seller">
-                      <?php echo $value['seller_id'] ?>
+                      <?php echo $value['username'] ?>
                     </div>
-                    <div class="status">
-                      <?php echo $value['status'] ?>
+                    <div class="description">
+                      <?php echo $value['description'] ?>
                     </div>
                   </div>
                 </div>
@@ -87,26 +104,14 @@ $history = $user->getHistory();
       </div>
 
       <div class="col-sm-3">
-        <div class="baits_balance">
-          <div class="baits">
-            <div class="title">
-              我的鱼饵
-            </div>
-            <div class="remaining">
-              <?php
-              echo $user->get('baits');
-               ?>
-            </div>
+        <div class="balance">
+          <div class="title">
+            我的余额
           </div>
-          <div class="balance">
-            <div class="title">
-              我的余额
-            </div>
-            <div class="remaining">
-              <?php
-              echo $user->get('balance');
-               ?>
-            </div>
+          <div class="remaining">
+            <?php
+            echo $user->get('balance');
+             ?>
           </div>
         </div>
         <div class="calendar">
@@ -129,6 +134,14 @@ $history = $user->getHistory();
 
   </div>
 
-<script src="js/main.js" charset="utf-8"></script>
+  <script src="../js/jquery-3.3.1.min.js"></script>
+ <script src="../js/jquery.cookie.js" charset="utf-8"></script>
+  <script>
+  if($.cookie("uid"))
+  {
+    var name = $.cookie("username");
+    $('.user-panel').html("<a href='#'>hello!"+name+"~&nbsp;</a><a href='signup/Account.php?do=logout'>退出登录</a>");
+  }
+  </script>
 </body>
 </html>

@@ -86,7 +86,7 @@ class UserInfo
   {
     $db = new DB();
     $db->connect();
-    $sql="select * from order_info where buyer_id='" . $this->uid ."'";
+    $sql="select * from order_info,seller_info,user_info where order_info.buyer_id='$this->uid' and status='3' and seller_info.id=order_info.seller_id and seller_info.uid=user_info.id";
     $db->query($sql);
     $result_arr = $db->getALlRows();
     return $result_arr;

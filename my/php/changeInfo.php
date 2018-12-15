@@ -12,6 +12,9 @@ $user->set('school',$_POST['school']);
 print_r($_POST);
 
 $user->updateUserInfo('gender',$user->get('gender'));
+$user->updateUserInfo('QQ',$user->get('QQ'));
+$user->updateUserInfo('wechat',$user->get('wechat'));
+$user->updateUserInfo('tel',$user->get('tel'));
 
 echo '<script>
 alert("修改成功！");
