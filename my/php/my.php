@@ -5,6 +5,7 @@ setCookie("uid", '1000', $time, "/"); //设置COOKIE
 setCookie("username", 'karen', $time, "/"); //设置一个用户名COOKIE
 setCookie("isLogin", 1, $time, "/");
 
+
 include 'UserInfo.php';
 $user = new UserInfo();
 $user->set('gender','女');
@@ -27,15 +28,33 @@ $user->set('balance',0);
    <title>我的授渔</title>
    <link rel="stylesheet" href="../css/bootstrap.min.css">
    <link rel="stylesheet" href="../css/my.css">
+   <link rel="stylesheet" href="../css/style.css">
  </head>
  <body>
-   <div class="navbar navbar-default">
-     <div class="logo">
-       授  渔
-     </div>
-   </div>
 
-   <div class="container">
+   <header class="header-section narrow">
+     <div class="header-warp narrow-warp">
+       <div class="container wide-container">
+         <a href="./" class="site-logo">
+           <img src="../img/logo.png" style="width:100px">
+         </a>
+         <div class="user-panel">
+           <a href="#">登录</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">注册</a>
+         </div>
+         <div class="nav-switch">
+           <i class="fa fa-bars"></i>
+         </div>
+         <ul class="main-menu">
+           <li><a href="about.html">关于我们</a></li>
+           <li><a href="courses.php?course=&page=1">课程总览</a></li>
+           <li><a href="blog.html">新闻中心</a></li>
+           <li><a href="contact.html">联系方式</a></li>
+         </ul>
+       </div>
+     </div>
+   </header>
+
+   <div class="container main-container">
      <div class="row">
        <div class="col-sm-2">
          <div class="list-group side-bar-left">
@@ -126,28 +145,17 @@ $user->set('balance',0);
        </div>
 
        <div class="col-sm-3">
-         <div class="baits_balance">
-           <div class="baits">
-             <div class="title">
-               我的鱼饵
-             </div>
-             <div class="remaining">
-               <?php
-               echo $user->get('baits');
-                ?>
-             </div>
+         <div class="balance">
+           <div class="title">
+             我的余额
            </div>
-           <div class="balance">
-             <div class="title">
-               我的余额
-             </div>
-             <div class="remaining">
-               <?php
-               echo $user->get('balance');
-                ?>
-             </div>
+           <div class="remaining">
+             <?php
+             echo $user->get('balance');
+              ?>
            </div>
          </div>
+
          <div class="calendar">
            <div class="year"><?php echo date("Y")," 年"; ?></div><div class="month"><?php echo date("m")," 月"; ?></div>
            <div class="day">
@@ -168,6 +176,15 @@ $user->set('balance',0);
 
    </div>
 
- <script src="js/main.js" charset="utf-8"></script>
+ <!-- <script src="js/main.js" charset="utf-8"></script> -->
+ <script src="../js/jquery-3.3.1.min.js"></script>
+<script src="../js/jquery.cookie.js" charset="utf-8"></script>
+ <script>
+ if($.cookie("uid"))
+ {
+   var name = $.cookie("username");
+   $('.user-panel').html("<a href='#'>hello!"+name+"~&nbsp;</a><a href='signup/Account.php?do=logout'>退出登录</a>");
+ }
+ </script>
  </body>
  </html>
