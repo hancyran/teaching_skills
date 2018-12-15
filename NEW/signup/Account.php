@@ -116,19 +116,27 @@ class Account
       </script>";
     }
     else{
-      $sql= "insert into user_info(username,qq) values(" . "'" . $this->identifier . "','" . $this->email . "')";
+      // echo $this->identifier,$this->email;
+      $sql="insert into user_info(username,qq) values('$this->identifier','$this->email')";
+      echo $sql;
+      $db_o = new DB();
+      $db_o->connect();
+      $db_o->query($sql);
+
       $result_arr=$this->UserDBselect();
       // print_r($result_arr);
       // insert into user_info(id,username,qq) values(10,'test','123');
       $userid=$result_arr['id'];
-      $sql1 = "insert into account(user_id,identify_type,identifier,login_token) values(" ."'" . $userid . "','uername'," . "'" . $this->identifier . "','" . $this->password . "')";
-      $db_o = new DB();
-      $db_o->connect();
-      $db_o->execute($sql);
-      $db_o->execute($sql1);
+      $username=$result_arr['username'];
+      $sql1 = "insert into account(user_id,identify_type,identifier,login_token) values($userid,'username','$this->identifier','$this->password')";
+      $db_o->query($sql1);
+      $time = time()+24*60*60;
+      setCookie("uid", $userid, $time, "/"); //设置COOKIE
+      setCookie("username", $username, $time, "/"); //设置一个用户名COOKIE
+      setCookie("isLogin", 1, $time, "/"); // 设置一个登录判断的标记isLogin
       echo "<script type='text/javascript'>
       alert('注册成功！请登录');
-      window.location.href='./login.html';
+      window.location.href='../index.html';
       </script>";
     }
   }
