@@ -1,0 +1,31 @@
+create table cart(
+  id varchar(20) not null,
+  name varchar(20) not null,
+  buyer_id varchar(50),
+  price int not null,
+  num int not null,
+  image varchar(50) 
+);
+
+
+
+INSERT INTO cart VALUES ('1', '数据库原理', '张三', 50,1, 'img/sjkyl.PNG');
+INSERT INTO cart VALUES ('2', '数据结构', '张三', 60, 3,'img/sjjg.PNG');
+INSERT INTO cart VALUES ('3', '假的数据库原理1', '张三', 50,1, 'img/sjkyl.PNG');
+INSERT INTO cart VALUES ('4', '假的数据库原理2', '张三', 50,1, 'img/sjkyl.PNG');
+INSERT INTO cart VALUES ('2', '数据结构', '李四', 60,2, 'img/sjjg.PNG');
+
+create table pro(
+  id varchar(20) not null,
+  name varchar(20) not null,
+  description varchar(50) not null,
+  price int not null,
+  image varchar(50),
+  stock int not null,
+  detail varchar(50),
+  timg varchar(50),
+  tname varchar(50),
+  tmajor varchar(50),
+  texp varchar(50)
+   );
+INSERT INTO pro VALUES ('1', '数据库原理', '一些描述', 50, 'img/sjkyl.PNG',24,'img/sjkyl.PNG|img/sjkyl.PNG','img/wstx.PNG','王五','计算机专业','一些经历');

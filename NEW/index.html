@@ -30,7 +30,11 @@
 					<img src="img/logo.png" style="width:100px">
 				</a>
 				<div class="user-panel">
+<<<<<<< HEAD
 					<a href="#">登录</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">注册</a>
+=======
+					<a href="signup/login.html">登录</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="signup/signup.html">注册</a>
+>>>>>>> 6df95084a5229d0c1a80cb354918b1021d05a50f
 				</div>
 				<div class="nav-switch">
 					<i class="fa fa-bars"></i>
@@ -472,6 +476,7 @@
 
 	<!--====== Javascripts & Jquery ======-->
 	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/jquery.cookie.js" charset="utf-8"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/circle-progress.min.js"></script>
@@ -484,6 +489,11 @@
   	gtag('js', new Date());
 
   	gtag('config', 'UA-120227799-1');
+		if($.cookie("uid"))
+		{
+			var name = $.cookie("username");
+			$('.user-panel').html("<a href='#'>hello!"+name+"~&nbsp;</a><a href='signup/Account.php?do=logout'>退出登录</a>");
+		}
 	</script>
 
 

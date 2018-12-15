@@ -10,6 +10,7 @@ class UserInfo
   public $tel;
   public $wechat;
   public $QQ;
+  public $email;
   public $school;
   public $campus;
   public $gender;
@@ -23,7 +24,7 @@ class UserInfo
 
   public function __construct()
   {
-    $this->isLogin = $_COOKIE['isLogin'];
+    $this->isLogin = isset($_COOKIE['isLogin'])?$_COOKIE['isLogin']:'';
     if($this->isLogin){
       $this->uid = $_COOKIE['uid'];
       $this->username = $_COOKIE['username'];
@@ -33,14 +34,15 @@ class UserInfo
       $db->query($sql);
       $result_arr = $db->getAllRows();
       if($result_arr){
-        $this->tel = $result_arr[0]['tel'] || "null";
-        $this->wechat = $result_arr[0]['wechat'] || "null";
-        $this->QQ = $result_arr[0]['qq'] || "null";
+        $this->tel = $result_arr[0]['tel'];
+        $this->wechat = $result_arr[0]['wechat'];
+        // $this->QQ = $result_arr[0]['QQ'];
         $this->gender = $result_arr[0]['gender'];
         $this->school = $result_arr[0]['school_id'];
         $this->campus = $result_arr[0]['campus_id'];
         // $this->introduction = $result_arr[0]['intro'];
         $this->verification = $result_arr[0]['verification'];
+        // $this->verification = $result_arr[0]['email'];
       }
     }
   }

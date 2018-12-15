@@ -22,7 +22,7 @@
     </div>
 
     <div class="signup-form form"  >
-      <form id="signup" class="" action="php/Account.php?do=signup" method="post">
+      <form id="signup" class="" action="Account.php?do=signup" method="post">
         <div class="input-wrap">
           <label for="username">用户名</label>
           <input name='username' data-rule='pattern:"^[0-9a-zA-z]{3,10}$"|required:true' type="text" class="input-control" value="">
@@ -32,8 +32,8 @@
 
         <div class="input-wrap">
           <label for="email">邮箱</label>
-          <input name='email'  type="email" class="input-control" value="">
-          <div id = "email-input-error" class="input-error">请输入正确的邮箱地址
+          <input name='email' data-rule='minlength:5|required:true'  type="email" class="input-control" value="">
+          <div id ="email-input-error" class="input-error">请输入邮箱地址
           </div>
         </div>
 

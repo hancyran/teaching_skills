@@ -1,5 +1,5 @@
 <?php
-include 'DB.php';
+include 'php/DB.php';
 
 class Account
 {
@@ -9,11 +9,17 @@ class Account
   public $do;
   public function setName()
   {
-    $this->name = $_POST['username'];//获取用户输入的姓名
+    if(isset($_POST['username']))
+    {
+      $this->name = $_POST['username'];//获取用户输入的姓名
+    }
   }
   public function setPassword()
   {
-    $this->password = $_POST['password'];//获取用户输入的密码
+    if ( isset($_POST['password'])) {
+      // code...
+      $this->password = $_POST['password'];//获取用户输入的密码
+    }
   }
   public function __construct()
   {
@@ -50,20 +56,20 @@ class Account
         setCookie("isLogin", 1, $time, "/"); // 设置一个登录判断的标记isLogin
         echo '<script type="text/javascript">
         alert("登陆成功！");
-        window.location.href="../signup.html";
+        window.location.href="../index.html";
         </script>';//返回主页
       }
       else{
         echo '<script type="text/javascript">
         alert("登录名或密码错误！请重新输入");
-        window.location.href="../login.html";
+        window.location.href="./login.html";
         </script>';
       }
     }
     else{
       echo '<script type="text/javascript">
       alert("登录名或密码错误！请重新输入");
-      window.location.href="../login.html";
+      window.location.href="./login.html";
       </script>';
     }
   }
@@ -74,7 +80,9 @@ class Account
     setCookie("uid", '', time()-3600, "/");
     setCookie("username", '', time()-3600, "/");
     setCookie("isLogin", '', time()-3600, "/");
-    echo '<script>alert("退出成功");location="../login.html"</script>';
+    echo '<script>alert("退出成功");
+    location="../index.html"
+    </script>';
     }
   }
 
@@ -84,7 +92,7 @@ class Account
     if($result_arr){
       echo "<script type='text/javascript'>
       alert('用户名不可用！请重新输入');
-      window.location.href='../signup.html';
+      window.location.href='./signup.html';
       </script>";
     }
     else{
@@ -96,7 +104,7 @@ class Account
       $db_o->execute($sql2);
       echo "<script type='text/javascript'>
       alert('注册成功！请登录');
-      window.location.href='../login.html';
+      window.location.href='./login.html';
       </script>";
     }
   }
