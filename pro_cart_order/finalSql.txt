@@ -1,0 +1,86 @@
+create table order_info(
+  id bigserial/* '商品id' */,
+  cid int not null /* '课程类别id' */,
+  class_name varchar(20) not null /* '商品名' */,
+  class_image varchar(50) not null/* '商品图'！！！！！！！！！！！！！！ */,
+  class_num int not null/* '商品库存'！！！！！！！！！！！！！！ */,
+  description varchar(100) not null /* '商品简介' */,
+  school_id int not null /*  '发布学校id' */,
+  campus_id int not null /* '发布校区id' */,
+  seller_id int not null /* '发布人id' */,
+  buyer_id int /* '购买者id' */,
+  status char(2) check (status in ('0','1','2','3')) /* 商品状态: 0 -> 等待中，1 -> 准备中（即已售卖但未开始），2 -> 进行中, 3 -> 已完成*/,
+  price int not null check (price >= 0)/* '商品价格' */,
+  rate int /* '商品评分' */,
+  comment varchar(1000) /* '商品评价语' */,
+  trace varchar(1000) /* '商品跟踪服务' */,
+  visibility char(1) default '1' check (visibility in ('0', '1')), /*商品是否可见： 0 -> 不可见 , 1 -> 可见*/
+  create_date timestamp default current_timestamp,
+  last_update_date timestamp default current_timestamp,
+  visit_time int default 0, /*商品访问次数*/
+  last_visit_date timestamp, /*最后的访问时间*/
+  primary key(id)
+  /*foreign key(cid) references course_info(id),
+  foreign key(seller_id) references seller_info(id),
+  foreign key(buyer_id) references user_info(id),
+  foreign key(school_id,campus_id) references school_info(school_id, campus_id)*/
+);
+
+
+insert into order_info (id, cid, class_name, class_image,class_num,description, school_id, campus_id, seller_id, buyer_id, status, price, rate, comment, trace)
+  values(1, 100, '数据库原理与实践','img/sjkyl.PNG',66,'数据库的基本常识和应用', 1000,  1,1, 1, '2', 100, null, null, null);
+insert into order_info (id, cid, class_name, class_image,class_num,description, school_id, campus_id, seller_id, buyer_id, status, price, rate, comment, trace)
+  values(2, 100, '数据库设计', 'img/sjkyl.PNG',66,'数据库的基本常识和应用',1000,  1,1, null, '0', 200, null, null, null);
+insert into order_info (id, cid, class_name, class_image,class_num,description, school_id, campus_id, seller_id, buyer_id, status, price, rate, comment, trace)
+  values(3, 100, '数据库高级编程', 'img/sjkyl.PNG',66,'数据库的基本常识和应用',1000,0, 1, null, '0', 100, null, null, null);
+insert into order_info (id, cid, class_name, class_image,class_num,description, school_id, campus_id, seller_id, buyer_id, status, price, rate, comment, trace)
+  values(4, 101, '数据结构','img/sjkyl.PNG',66, 'c++应用数据结构',1000,  1,1, 1, '2', 100, null, null, null);
+insert into order_info (id, cid, class_name, class_image,class_num,description, school_id, campus_id, seller_id, buyer_id, status, price, rate, comment, trace)
+  values(5, 100, '高级数据库设计','img/sjkyl.PNG',66, '数据库的基本常识和应用', 1000, 1,1, null, '0', 200, null, null, null);
+insert into order_info (id, cid, class_name, class_image,class_num,description, school_id, campus_id, seller_id, buyer_id, status, price, rate, comment, trace)
+  values(6, 100, 'MYSQL的数据库应用','img/sjkyl.PNG',66,'数据库的基本常识和应用',1000, 0, 1, null, '0', 100, null, null, null);
+insert into order_info (id, cid, class_name, class_image,class_num,description, school_id, campus_id, seller_id, buyer_id, status, price, rate, comment, trace)
+  values(7, 100, '数据库实战', 'img/sjkyl.PNG',66,'数据库的基本常识和应用',1000,  1,1, 1, '2', 100, null, null, null);
+insert into order_info (id, cid, class_name, class_image,class_num,description, school_id, campus_id, seller_id, buyer_id, status, price, rate, comment, trace)
+  values(8, 100, '大数据应用', 'img/sjkyl.PNG',66,'数据库的基本常识和应用',1000,  1,1, null, '0', 200, null, null, null);
+insert into order_info (id, cid, class_name, class_image,class_num,description, school_id, campus_id, seller_id, buyer_id, status, price, rate, comment, trace)
+  values(9, 100, 'python数据分析','img/sjkyl.PNG',66,'数据库的基本常识和应用',1000,  0, 1, null, '0', 100, null, null, null);
+insert into order_info (id, cid, class_name, class_image,class_num,description, school_id, campus_id, seller_id, buyer_id, status, price, rate, comment, trace)
+  values(10, 100, 'python数据分析','img/sjkyl.PNG',66,'数据库的基本常识和应用',1000,  0, 1, null, '0', 100, null, null, null);
+insert into order_info (id, cid, class_name, class_image,class_num,description, school_id, campus_id, seller_id, buyer_id, status, price, rate, comment, trace)
+  values(11, 100, '数据科学入门','img/sjkyl.PNG',66,'数据库的基本常识和应用',1000,  0, 1, null, '0', 100, null, null, null);
+
+
+create table seller_info(
+  id serial, /*卖家id*/
+  uid int, /*卖家的原用户id*/
+  real_name varchar(10), /*卖家真名*/
+  real_school_id int, /*卖家真实的学校id*/
+  real_campus_id int, /*卖家真实的校区id*/
+  real_stu_id varchar(40), /*卖家的真实学号*/
+  balance int check (balance >= 0), /*卖家的账户存款*/
+  create_date timestamp default current_timestamp, /*卖家的创建时间*/
+  primary key(id)
+  /*foreign key(uid) references user_info(id),
+  foreign key(real_school_id,real_campus_id) references school_info(school_id, campus_id)*/
+);
+
+insert into seller_info values(1, 3, '小律', 1000, 1, '2016141400000', 100, current_timestamp);
+
+
+
+create table cart(
+  id bigserial/* '商品id' */,
+  buyer_id int /* '购买者id' */,
+  num int not null/* '商品数量' */,
+  primary key(id)
+);
+
+
+
+INSERT INTO cart VALUES (1,1,2);
+INSERT INTO cart VALUES (2,1,5);
+INSERT INTO cart VALUES (3,1,2);
+INSERT INTO cart VALUES (4,1,3);
+INSERT INTO cart VALUES (5,1,4);
+INSERT INTO cart VALUES (6,1,5);
