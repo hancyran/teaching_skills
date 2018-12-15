@@ -42,6 +42,7 @@ create table course_info(
 create table user_info(
   id serial, /*用户id*/
   username varchar(20) not null, /*用户名（可用于登录时身份验证）*/
+  img int default 1,
   gender varchar(5) default 'none', /*用户性别: f -> 女性， m -> 男性*/
   tel varchar(20), /*用户电话*/
   wechat varchar(50), /*用户微信*/
@@ -69,6 +70,8 @@ create table account(
 create table seller_info(
   id serial, /*卖家id*/
   uid int, /*卖家的原用户id*/
+  /*
+  self_description varchar(200), 卖家自述*/
   real_name varchar(10), /*卖家真名*/
   real_school_id int, /*卖家真实的学校id*/
   real_campus_id int, /*卖家真实的校区id*/
@@ -85,6 +88,8 @@ create table order_info(
   cid int not null /* '课程类别id' */,
   class_name varchar(20) not null /* '商品名' */,
   description varchar(100) not null /* '商品简介' */,
+  /*
+  content text, 商品详情 */
   school_id int not null /*  '发布学校id' */,
   campus_id int not null /* '发布校区id' */,
   seller_id int not null /* '发布人id' */,
