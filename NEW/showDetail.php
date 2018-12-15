@@ -7,6 +7,7 @@ class showDetail{
   private $db_for_orderInfo;
   private $db_for_sellerInfo;
   private $course_type_id;
+  private $db_for_update;
   //
   //public $course_type1;
   //public $course_type2;
@@ -30,8 +31,10 @@ class showDetail{
   public function __construct($arr){
     $this->db_for_orderInfo= new DB();
     $this->db_for_sellerInfo= new DB();
+    $this->db_for_update= new DB();
     $this->db_for_orderInfo->connect();
     $this->db_for_sellerInfo->connect();
+    $this->db_for_update->connect();
     $this->order_id= $arr['order_id'];
     $this->sq= "select * from order_info,school_info where order_info.id=$this->order_id and
     (school_info.school_id,school_info.campus_id)=(order_info.school_id,order_info.campus_id)";
@@ -61,10 +64,15 @@ class showDetail{
     $this->seller_username= $seller_result['username'];
     $this->seller_school= $seller_result['school_name'];
     $this->seller_major= $seller_result['major'];
+    //
+    $update_visit_time="update order_info set visit_time=visit_time+1 where id=$this->order_id";
+    //
+    $this->db_for_update->query($update_visit_time);
   }
   public function __destruct(){
     $this->db_for_sellerInfo->close();
     $this->db_for_orderInfo->close();
+    $this->db_for_update->close();
   }
 }
 
