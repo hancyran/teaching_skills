@@ -18,11 +18,11 @@ insert into user_info (id, username, gender, tel, wechat, qq, school_id, campus_
 insert into user_info (id, username, gender, tel, wechat, qq, school_id, campus_id, major, balance, verification)
   values(3, 'xiaolv', 'f', '119', 'xiaohong', '12345678', 1000, 1, 'stata',1000, 'yes');
 
-insert into account values(1,1,'username','xiaohong', '123');
-insert into account values(2,1,'phone', '1588888888', '123');
-insert into account values(3,2,'username','xiaolan', '123');
-insert into account values(4,2,'email','123@qq.com', '123');
-insert into account values(5,3,'username','xiaolv', '123');
+insert into account (user_id, identify_type, identifier, login_token) values(1,'username','xiaohong', '123');
+insert into account (user_id, identify_type, identifier, login_token) values(1,'phone', '1588888888', '123');
+insert into account (user_id, identify_type, identifier, login_token) values(2,'username','xiaolan', '123');
+insert into account (user_id, identify_type, identifier, login_token) values(2,'email','123@qq.com', '123');
+insert into account (user_id, identify_type, identifier, login_token) values(3,'username','xiaolv', '123');
 
 insert into seller_info values(1, 3, '小律', 1000, 1, '2016141400000', 100, current_timestamp);
 

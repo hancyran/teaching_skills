@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>注册啦！</title>
-  <link rel="icon" href="img/heart.png">
+  <title>授渔</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="授渔">
+	<meta name="keywords" content="授渔">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Favicon -->
+	<link href="../img/favicon.ico" rel="shortcut icon"/>
   <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/8.0.0/normalize.css"> -->
   <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/signup.css">
 </head>
 <body>
   <div class="nav">
@@ -16,13 +18,13 @@
       <img src="../img/VLogo.png" alt="logo" style="width: 200px">
     </a>
   </div>
-  <div class="wrap wrap-sm" id="mainCard" style="">
+  <div class="wrap wrap-sm" id="mainCard">
     <div class="header">
-      <h1>注 册<small>已有账号?<a href="login.html">登录</a></small></h1>
+      <h1>注 册<small>已有账号?<a href="../login">登录</a></small></h1>
     </div>
 
     <div class="signup-form form"  >
-      <form id="signup" class="" action="Account.php?do=signup" method="post">
+      <form id="signup" class="" action="../php/Account.php?do=signup" method="post">
         <div class="input-wrap">
           <label for="username">用户名</label>
           <input name='username' data-rule='pattern:"^[0-9a-zA-z]{3,10}$"|required:true' type="text" class="input-control" value="">
@@ -53,10 +55,10 @@
     </div>
   </div>
 
-<script src="js/jquery-3.3.1.min.js" charset="utf-8"></script>
-<script src="js/validator.js" charset="utf-8"></script>
-<script src="js/input.js" charset="utf-8"></script>
-<script src="js/main.js" charset="utf-8"></script>
+<script src="../js/jquery-3.2.1.min.js" charset="utf-8"></script>
+<script src="../js/signup/validator.js" charset="utf-8"></script>
+<script src="../js/signup/input.js" charset="utf-8"></script>
+<script src="../js/signup/main.js" charset="utf-8"></script>
 
 </body>
 </html>

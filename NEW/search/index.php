@@ -120,7 +120,7 @@ else {
 				?>
 				<!-- course -->
 				<div class="col-lg-4 col-md-6">
-					<form class="course-item" action="../single" method="post">
+					<form class="course-item" action="../single/" method="post">
 						<input type="hidden" name="order_id" value="<?php echo $course['id'] ?>">
 						<button type="submit" name="button" id="order_btn">
 								<figure class="course-preview">

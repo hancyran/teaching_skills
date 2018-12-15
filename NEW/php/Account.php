@@ -1,5 +1,5 @@
 <?php
-include 'php/DB.php';
+include '../php/DB.php';
 
 class Account
 {
@@ -134,10 +134,10 @@ class Account
       setCookie("uid", $userid, $time, "/"); //设置COOKIE
       setCookie("username", $username, $time, "/"); //设置一个用户名COOKIE
       setCookie("isLogin", 1, $time, "/"); // 设置一个登录判断的标记isLogin
-      echo "<script type='text/javascript'>
-      alert('注册成功！请登录');
-      window.location.href='../index.html';
-      </script>";
+      //echo "<script type='text/javascript'>
+      //alert('注册成功！请登录');
+      //window.location.href='../index.html';
+      //</script>";
     }
   }
 
