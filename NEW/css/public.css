@@ -98,7 +98,7 @@ summary {
 }
 
 
-/*清楚浮动*/
+/*清除浮动*/
 
 .clearfix:after {
 	content: "";

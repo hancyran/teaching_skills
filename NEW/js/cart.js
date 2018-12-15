@@ -1,6 +1,6 @@
 $(function(){
 	/**************数量加减***************/
-	$(".num .sub").click(function(){
+	$(".num .psub").click(function(){
 		var num = parseInt($(this).siblings("span").text());
 		if(num<=1){
 			$(this).attr("disabled","disabled");
@@ -15,18 +15,79 @@ $(function(){
 			zg();
 		}
 	});
-	$(".num .add").click(function(){
+	$(".num .padd").click(function(){
 		var num = parseInt($(this).siblings("span").text());
-		if(num>=5){
-			confirm("限购5件");
-		}else{
 			num++;
 			$(this).siblings("span").text(num);
 			var price = $(this).parents(".number").prev().text().substring(1);
 			$(this).parents(".th").find(".sAll").text('￥'+(num*price).toFixed(2));
 			jisuan();
 			zg();
+
+	});
+	$(".num .sub").mousedown(function(){
+		var num = parseInt($(this).siblings("span").text());
+		var id = parseInt($(this).siblings("span").attr('data'));
+		if(num<=1){
+			$(this).attr("disabled","disabled");
+		}else{
+			num--;
+			$(this).siblings("span").text(num);
+			//获取除了货币符号以外的数字
+			var price = $(this).parents(".number").prev().text().substring(1);
+			//单价和数量相乘并保留两位小数
+			$(this).parents(".th").find(".sAll").text('￥'+(num*price).toFixed(2));
+			jisuan();
+			zg();
 		}
+		$.ajax({
+			url:"/test1/changeNum.php",
+			type:"post",
+			data:{
+					"num":num,
+					"id": id
+				},
+			success:function(response){
+				// if(response.errno == -1){
+				// 	alert('失败');
+				// }else{
+				// 	alert('成功');
+				// }	
+			},
+			error: function () {
+				alert('出现错误！');
+			}			
+		});
+
+	});
+	$(".num .add").mousedown(function(){
+		var num = parseInt($(this).siblings("span").text());
+		var id = parseInt($(this).siblings("span").attr('data'));
+			num++;
+			$(this).siblings("span").text(num);
+			var price = $(this).parents(".number").prev().text().substring(1);
+			$(this).parents(".th").find(".sAll").text('￥'+(num*price).toFixed(2));
+			jisuan();
+			zg();
+			$.ajax({
+				url:"/test1/changeNum.php",
+				type:"post",
+				data:{
+						"num":num,
+						"id": id
+					},
+				success:function(response){
+					// if(response.errno == -1){
+					// 	alert('失败');
+					// }else{
+					// 	alert('成功');
+					// }	
+				},
+				error: function () {
+					alert('出现错误！');
+				}			
+			});
+
 	});
 	//计算总价
 	function jisuan(){
@@ -60,7 +121,7 @@ $(function(){
 			})
 		}
 		if($("#sl").text()>0){
-			$(".count").css("background","#c10000");
+			$(".count").css("background","#90D7EC");
 		}else{
 			$(".count").css("background","#8e8e8e");
 		}
@@ -121,10 +182,30 @@ $(function(){
 	$('.del').click(function(){
 		//单个删除
 		if($(this).parent().parent().hasClass("th")){
+			var id = parseInt($(this).attr('data'));
 			$(".mask").show();
 			$(".tipDel").show();
 			index = $(this).parents(".th").index()-1;
+
 			$('.cer').click(function(){
+				// alert("test");
+				$.ajax({
+					url:"/test1/delete.php",
+					type:"post",
+					data:{
+							"id": id
+						},
+					success:function(response){
+						if(response.errno == -1){
+							alert('失败');
+						}else{
+							//alert('删除成功');
+						}	
+					},
+					error: function () {
+						alert('出现错误！');
+					}			
+				});
 				$(".mask").hide();
 				$(".tipDel").hide();
 				$(".th").eq(index).remove();
@@ -132,10 +213,13 @@ $(function(){
 				if($(".th").length==0){
 					$(".table .goOn").show();
 				}
+				zg();
+				jisuan();
+				
 			})
 		}else{
-			//选中多个一起删除
-			if($(".th input[type='checkbox']:checked").length==0){
+			//清空购物车删除
+			if($(".th").length==0){
 				$(".mask").show();
 				$(".pleaseC").show();
 			}
@@ -143,13 +227,24 @@ $(function(){
 				$(".mask").show();
 				$(".tipDel").show();
 				$('.cer').click(function(){
-					$(".th input[type='checkbox']:checked").each(function(j){
-						index = $(this).parents('.th').index()-1;
-						$(".th").eq(index).remove();
-						if($(".th").length==0){
-							$(".table .goOn").show();
-						}
-					})
+					$.ajax({
+						url:"/test1/clear.php",
+						type:"post",
+						success:function(response){
+							if(response.errno == -1){
+								alert('失败');
+							}else{
+								alert('成功');
+							}	
+						},
+						error: function () {
+							alert('出现错误！');
+						}			
+					});
+					$(".th").remove();
+					if($(".th").length==0){
+						$(".table .goOn").show();
+					}
 					$(".mask").hide();
 					$(".tipDel").hide();
 					zg();
