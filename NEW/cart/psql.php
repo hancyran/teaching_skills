@@ -1,8 +1,8 @@
 <?php
 $host        = "host=localhost";
 $port        = "port=5432";
-$dbname      = "dbname=final";
-$credentials = "user=postgres password=123456";
+$dbname      = "dbname=teaching_skills";
+$credentials = "user=haoxiran password=password";
 
 $db = pg_connect("$host $port $dbname $credentials");
 if (!$db) {

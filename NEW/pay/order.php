@@ -1,17 +1,37 @@
-<!DOCTYPE html>
+<?php
+session_start();
+include 'psql.php';
+
+$num = $_GET["num"];
+$id = $_GET["id"];
+$buyer_id=$_SESSION['buyer_id'] = 1;
+
+
+$sql ="SELECT * FROM order_info where id ='{$id}'";
+$ret = pg_query($db, $sql);
+if (!$ret) {
+    echo pg_last_error($db);
+}
+/* else {
+    echo "Table created successfully\n";
+} */
+// pg_close($db);
+$data=pg_fetch_array($ret);
+?>
+
 <html>
 	<head lang="en">
 		<meta charset="utf-8" />
 		<title>订单页</title>
-		<link rel="stylesheet" type="text/css" href="css/public.css"/>
-		<link rel="stylesheet" type="text/css" href="css/proList.css" />
-		<link rel="stylesheet" type="text/css" href="css/mygxin.css" />
+		<link rel="stylesheet" type="text/css" href="../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/proList.css" />
+		<link rel="stylesheet" type="text/css" href="../css/mygxin.css" />
 	</head>
 	<body>
 		<!----------------------------------------order------------------>
-		<div class="head ding">
+		<!-- <div class="head ding">
 			<h1>授渔</h1>
-		</div>
+		</div> -->
 		<div class="order cart mt">
 			<!-----------------site------------------->
 			<div class="site">
@@ -80,35 +100,25 @@
 					<h3>支付方式</h3>
 					<!--------way---------------->
 					<div class="way clearfix">
-						<img class="on" src="img/way01.jpg"> 
-						<img src="img/way02.jpg"> 
-						<img src="img/way03.jpg"> 
-						<img src="img/way04.jpg"> 
+						<img class="on" src="../img/cart/way01.jpg">
+						<img src="../img/cart/way02.jpg">
+						<img src="../img/cart/way03.jpg">
+						<img src="../img/cart/way04.jpg">
 					</div>
 				</div>
 				<div class="orderR fr">
 					<div class="msg">
-						<h3>订单内容<a href="cart.php" class="fr">返回购物车</a></h3>
+						<h3>订单内容<a href="../cart/cart.php" class="fr">返回购物车</a></h3>
 						<!--------ul---------------->
 						<ul class="clearfix">
 							<li class="fl">
-								<img src="img/sjkyl.PNG">
+								<img src="<?php echo $data["class_image"]?>">
 							</li>
 							<li class="fl">
-								<p>数据库原理</p>
-								<p>数量：1</p>
+								<p><?php echo $data["class_name"]?></p>
+								<p>数量：<?php echo $num?></p>
 							</li>
-							<li class="fr">￥50</li>
-						</ul>
-						<ul class="clearfix">
-							<li class="fl">
-								<img src="img/sjjg.PNG">
-							</li>
-							<li class="fl">
-								<p>数据结构</p>
-								<p>数量：1</p>
-							</li>
-							<li class="fr">￥60</li>
+							<li class="fr">￥<?php echo $num * $data["price"]?></li>
 						</ul>
 					</div>
 					<!--------tips---------------->
@@ -119,7 +129,7 @@
 					</div> -->
 					<!--------tips count---------------->
 					<div class="count tips">
-						<p><span class="fl">合计：</span><span class="fr">￥110</span></p>
+						<p><span class="fl">合计：</span><span class="fr">￥<?php echo $num * $data["price"]?></span></p>
 					</div>
 					<!--<input type="button" name="" value="去支付"> -->
 					<a href="#" class="pay">去支付</a>
@@ -155,8 +165,8 @@
 				</div>
 			</form>
 		</div>
-		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/pro.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/user.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/pro.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/user.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>

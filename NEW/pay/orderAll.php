@@ -22,28 +22,28 @@ if (!$ret) {
 	<head lang="en">
 		<meta charset="utf-8" />
 		<title>订单页</title>
-		<link rel="stylesheet" type="text/css" href="css/public.css"/>
-		<link rel="stylesheet" type="text/css" href="css/proList.css" />
-		<link rel="stylesheet" type="text/css" href="css/mygxin.css" />
+		<link rel="stylesheet" type="text/css" href="../css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/proList.css" />
+		<link rel="stylesheet" type="text/css" href="../css/mygxin.css" />
 	</head>
 	<body>
-		<!----------------------------------------order------------------>
+		<!--order------------------>
 		<!-- <div class="head ding">
 			<h1>授渔</h1>
 		</div> -->
 		<div class="order cart mt">
-			<!-----------------site------------------->
+			<!--site------------------->
 			<div class="site">
 				<p class="wrapper clearfix">
 					<span class="fl">订单确认</span>
 				</p>
 			</div>
-			<!-----------------orderCon------------------->
+			<!---orderCon------------------->
 			<div class="orderCon wrapper clearfix">
 				<div class="orderL fl">
-					<!--------h3---------------->
+					<!--h3---------------->
 					<h3>收件信息<a href="#" class="fr">新增地址</a></h3>
-					<!--------addres---------------->
+					<!--addres---------------->
 					<div class="addres clearfix">
 						<div class="addre fl on">
 							<div class="tit clearfix">
@@ -97,18 +97,18 @@ if (!$ret) {
 						</div>
 					</div>
 					<h3>支付方式</h3>
-					<!--------way---------------->
+					<!--way---------------->
 					<div class="way clearfix">
-						<img class="on" src="img/way01.jpg"> 
-						<img src="img/way02.jpg"> 
-						<img src="img/way03.jpg"> 
-						<img src="img/way04.jpg"> 
+						<img class="on" src="../img/cart/way01.jpg">
+						<img src="../img/cart/way02.jpg">
+						<img src="../img/cart/way03.jpg">
+						<img src="../img/cart/way04.jpg">
 					</div>
 				</div>
 				<div class="orderR fr">
 					<div class="msg">
-						<h3>订单内容<a href="cart.php" class="fr">返回购物车</a></h3>
-                        <!--------ul---------------->
+						<h3>订单内容<a href="../cart/" class="fr">返回购物车</a></h3>
+                        <!--url---------------->
                         <?php while($data = pg_fetch_array($ret)){
 							$sql2 ="SELECT * FROM order_info where id ='{$data['id']}'";
 							$ret2 = pg_query($db, $sql2);
@@ -128,13 +128,13 @@ if (!$ret) {
                         }
                         ?>
 					</div>
-					<!--------tips---------------->
+					<!--tips---------------->
 					<!-- <div class="tips">
 						<p><span class="fl">商品金额：</span><span class="fr">￥139.80</span></p>
 						<p><span class="fl">优惠金额：</span><span class="fr">￥0.00</span></p>
 						<p><span class="fl">运费：</span><span class="fr">免运费</span></p>
 					</div> -->
-					<!--------tips count---------------->
+					<!--tips count---------------->
 					<div class="count tips">
 						<p><span class="fl">合计：</span><span class="fr">￥<?php echo $sum?></span></p>
 					</div>
@@ -172,8 +172,8 @@ if (!$ret) {
 				</div>
 			</form>
 		</div>
-		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/pro.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/user.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/pro.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/user.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>
