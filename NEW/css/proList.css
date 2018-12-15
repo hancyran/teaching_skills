@@ -1,3 +1,9 @@
+.banner{
+	min-width: 1160px;
+}
+.banner img{
+	width:100%;
+}
 /*********************current********************/
 .current{
 	height:60px;
@@ -98,18 +104,74 @@
 .hover-red:hover{
 	color:red;
 }
-
+/**********************mask****************/
+.mask{
+	position: fixed;
+	left:0;
+	top:0;
+	z-index:101;
+	width:100%;
+	height:100%;
+	background: rgba(0,0,0,0.5);
+	display: none;
+}
 /*******************proDets*************************/
-
-
-
-
+.proDets{
+	position: fixed;
+	top:50%;
+	left:50%;
+	z-index: 102;
+	margin-left: -370px;
+	margin-top: -280px;
+	padding:30px;
+	width:740px;
+	background: #fff;
+	display: none;
+}
+.off{
+	position: absolute;
+	right:0;
+	top:0;
+	width: 26px;
+	height:26px;
+	cursor: pointer;
+}
+.proDets .tit{
+	height:50px;
+	line-height:50px;
+	font-size:26px;
+	margin-bottom:20px;
+}
+.proDets .tit h4{
+	font-weight: normal;
+}
+.proDets .tit span{
+	color:#C10000;
+}
 .proCon .proImg{
 	width:360px;
 	margin-right: 100px;
 }
 .proCon .proImg img{
 	display: block;
+}
+.smallImg{
+	margin-top:20px;
+}
+.smallImg img{
+	float: left;
+}
+.proIntro .smallImg p{
+	padding: 2px;
+	margin-right: 20px;
+	border:1px solid #fff;
+}
+.proIntro .smallImg img{
+	width:45px;
+}
+.proImg .smallImg img{
+	width:50px;
+	margin-right: 20px;
 }
 .proIntro{
 	width:350px;
@@ -183,7 +245,77 @@ a.more{
 	text-decoration: underline;
 }
 /******************************proDetail******************************/
-
+.detCon{
+	margin-top:120px;
+}
+.detCon .proDet .proImg > img{
+	width:290px;
+	height:290px;
+}
+.detCon .smallImg > img{
+	width:85px;
+	height:85px;
+}
+.detCon .proImg{
+	width: auto;
+}
+.detCon .intro{
+	width:400px;
+}
+.detCon .intro .title h4{
+	height:50px;
+	line-height:50px;
+	font-weight:normal;
+	font-size: 22px;
+}
+.detCon .intro .title p{
+	margin:10px 0;
+	color: #777;
+}
+.detCon .intro .title span{
+	font-size: 22px;
+	color:#99D9EA;
+}
+.detCon .intro .proIntro{
+	width:auto;
+}
+.detCon .btn{
+	padding:0 30px;
+}
+.introMsg{
+	margin-top:50px;
+	margin-bottom:50px;
+}
+.detCon .seller{
+	width:300px;
+}
+.detCon .seller .image{
+	height: 200px;
+	width: 300px;
+	margin-bottom: 10px;
+}
+.detCon .seller .image > img{
+	height: 200px;
+	width: 200px;
+}
+.detCon .seller .allInfo {
+	width: 300px;
+	height: 200px;
+}
+.detCon .seller .allInfo .info {
+	width: 200px;
+}
+.detCon .seller .allInfo .info span{
+	height:30px;
+	font-weight:bold;
+	font-size: 15px;
+	display: block;
+}
+.detCon .seller .allInfo .info p{
+	height:30px;
+	font-weight:normal;
+	font-size: 12px;
+}
 .msgL{
 	width:945px;
 }
@@ -373,7 +505,7 @@ section h3{
 	left: 10px;
 	height: 340px;
 	border-right:2px solid #90D7EC;
-	 transform: scaleY(0);
+	 transform: scaleY(0); 
 	transform-origin:  0 100%;
 	transition: all .5s ease;
 	-webkit-transition: all .5s ease;
@@ -391,29 +523,20 @@ section h3{
 	z-index: 100;
 	border-left: 2px solid #90D7EC;
 	height: 340px;
-	transform: scaleX(0);
+	transform: scaleX(0); 
 	transform-origin: 0 -100%;
 	transition: all .5s ease;
 	-webkit-transition: all .5s ease;
 }
-.paintList a dl:hover dt:after{
+.paintList a dl:hover dt:after{ 
 	transform: scaleY(1);
 	/*transition-timing-function: cubic-bezier(0.52,1.64,0.37,0.66);*/
-
+	
 }
-.paintList a dl:hover dt:before{
+.paintList a dl:hover dt:before{ 
 	transform: scaleX(1);
 	/*transition-timing-function: cubic-bezier(0.52,1.64,0.37,0.66);*/
 }
-
-
-
-
-
-
-
-
-
 .paintList > p{
 	flex: 1;
 }
@@ -514,7 +637,13 @@ section h3{
 .table .th .pro dl dt{
 	margin-right:13px;
 }
+.table .th .pro dl dt img{
+	height: 120px;
+	width: 120px;
+}
 .table .th .pro dl dd{
+	height: 120px;
+	width: 120px;
 	position: relative;
 	color:#777;
 	padding:0 10px 10px;
@@ -524,7 +653,7 @@ section h3{
 	position: absolute;
 	right:0;
 	bottom:0;
-	color:#C10000;
+	color:#90D7EC;
 }
 .table .th .pro dl dd div.change{
 	position: absolute;
@@ -536,15 +665,15 @@ section h3{
 	display: none;
 }
 .table .th .pro dl dd.on{
-	border:1px dashed #C10000;
+	border:1px dashed #90D7EC;
 }
 .table .th .pro dl dd p{
-	line-height: 20px;
+	line-height: 120px;
 }
-.table .th .pro dl dd p:nth-child(1){
+/* .table .th .pro dl dd p:nth-child(1){
 	color:#262626;
 	line-height: 40px;
-}
+} */
 .table .th .number p{
 	width:81px;
 	margin:60px auto 0;
@@ -576,7 +705,7 @@ section h3{
 	top:0;
 	width:16px;
 	height:16px;
-	background: url(../img/temp/check.jpg);
+	background: url(../img/check.jpg);
 }
 .table  label input[type=checkbox]:checked + span{
 	position: absolute;
@@ -584,7 +713,7 @@ section h3{
 	top:0;
 	width:16px;
 	height:16px;
-	background: url(../img/temp/checkOn.jpg);
+	background: url(../img/checkOn.jpg);
 }
 .table .tr p:last-child a,
 .table .tr p:last-child span{
@@ -602,7 +731,7 @@ section h3{
 	background: #8e8e8e;
 }
 .table .tr p small{
-	color: #c10000;
+	color: #90D7EC;
 }
 .table .tr p .del{
 	margin-left:20px;
@@ -616,7 +745,7 @@ section h3{
 	display: none;
 }
 .table .goOn a{
-	color: #C10000;
+	color: #90D7EC;
 	text-decoration: underline;
 }
 .pleaseC{
@@ -656,7 +785,7 @@ section h3{
 	height:40px;
 	line-height: 40px;
 	text-align: center;
-	background: #C10000;
+	background: #90D7EC;
 	color:#fff;
 }
 /************************order**********************************/
@@ -687,7 +816,7 @@ section h3{
 	cursor: pointer;
 }
 .order .orderCon .orderL .addre.on{
-	border:2px solid #C10000;
+	border:2px solid #90D7EC;
 }
 .order .orderCon .orderL .addre .tit{
 	height: 45px;
@@ -715,7 +844,7 @@ section h3{
 	cursor: pointer;
 }
 .order .orderCon .orderL .way img.on,.order .orderCon .orderL .dis span.on{
-	border:2px solid #c10000;
+	border:2px solid #90D7EC;
 }
 .order .orderCon .orderL .dis span{
 	width:136px;
@@ -750,6 +879,10 @@ section h3{
 .order .orderCon .orderR .msg ul li:nth-child(2) p:nth-child(3){
 	color:#777;
 }
+.order .orderCon .orderR .msg ul img{
+	height: 87px;
+	width: 87px;
+}
 .order .orderCon .orderR .tips{
 	padding:10px 0;
 	border-bottom:1px solid #dbdbdb;
@@ -764,7 +897,7 @@ section h3{
 	font-size:16px;
 }
 .order .orderCon .orderR .count span:nth-child(2){
-	color:#c10000;
+	color:#90D7EC;
 }
 .order .orderCon .orderR .pay{
 	display: inline-block;
@@ -772,7 +905,7 @@ section h3{
 	height: 40px;
 	text-align: center;
 	line-height: 40px;
-	background: #c10000;
+	background: #90D7EC;
 	color: #fff;
 }
 /****************ok********************/
@@ -799,9 +932,9 @@ ul.sch{
 	padding:0 10px;
 }
 ul.sch li{
-	height:40px;
+	height:40px;	
 	line-height:40px;
-	border-bottom: 1px dashed #dbdbdb;
+	border-bottom: 1px dashed #dbdbdb;	
 }
 ul.sch li:last-child{
 	border:none;

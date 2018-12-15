@@ -6,52 +6,71 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>注册啦！</title>
   <link rel="icon" href="img/heart.png">
-  <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/8.0.0/normalize.css"> -->
-  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/8.0.0/normalize.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style0.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="nav">
-    <a href="../">
-      <img src="../img/VLogo.png" alt="logo" style="width: 200px">
-    </a>
+
+  <header class="header-section">
+		<div class="header-warp">
+			<div class="container">
+				<a href="./" class="site-logo">
+					<img src="img/logo.png" style="width:100px">
+				</a>
+				<div class="user-panel">
+					<a href="#">登录</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">注册</a>
+				</div>
+				<div class="nav-switch">
+					<i class="fa fa-bars"></i>
+				</div>
+				<ul class="main-menu">
+					<li><a href="about.html">关于我们</a></li>
+					<li><a href="courses.html">课程总览</a></li>
+					<li><a href="blog.html">新闻中心</a></li>
+					<li><a href="contact.html">联系方式</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+
+<div class="wrap wrap-sm" id="mainCard" style="">
+  <div class="header">
+    <h1>注 册<small>已有账号?<a href="login.html">登录</a></small></h1>
   </div>
-  <div class="wrap wrap-sm" id="mainCard" style="">
-    <div class="header">
-      <h1>注 册<small>已有账号?<a href="login.html">登录</a></small></h1>
-    </div>
 
-    <div class="signup-form form"  >
-      <form id="signup" class="" action="Account.php?do=signup" method="post">
-        <div class="input-wrap">
-          <label for="username">用户名</label>
-          <input name='username' data-rule='pattern:"^[0-9a-zA-z]{3,10}$"|required:true' type="text" class="input-control" value="">
-          <div id = "username-input-error" class="input-error">请输入3-10位英文字母和数字组成的昵称
-          </div>
+  <div class="signup-form form"  >
+    <form id="signup" class="" action="php/Account.php?do=signup" method="post">
+      <div class="input-wrap">
+        <label for="username">用户名</label>
+        <input name='username' data-rule='pattern:"^[0-9a-zA-z]{3,10}$"|required:true' type="text" class="input-control" value="">
+        <div id = "username-input-error" class="input-error">请输入3-10位英文字母和数字组成的昵称
         </div>
+      </div>
 
-        <div class="input-wrap">
-          <label for="email">邮箱</label>
-          <input name='email' data-rule='minlength:5|required:true'  type="email" class="input-control" value="">
-          <div id ="email-input-error" class="input-error">请输入邮箱地址
-          </div>
+      <div class="input-wrap">
+        <label for="email">邮箱</label>
+        <input name='email'  type="email" class="input-control" value="">
+        <div id = "email-input-error" class="input-error">请输入正确的邮箱地址
         </div>
+      </div>
 
-        <div class="input-wrap">
-          <label for="password">密码</label>
-          <input name='password' data-rule='pattern:"^[0-9a-zA-Z]{5,16}$"|required:true'  type="password" class="input-control" value="">
-          <div id = "password-input-error" class="input-error">请输入5-16位英文字母和数字组成的密码
-          </div>
+      <div class="input-wrap">
+        <label for="password">密码</label>
+        <input name='password' data-rule='pattern:"^[0-9a-zA-Z]{5,16}$"|required:true'  type="password" class="input-control" value="">
+        <div id = "password-input-error" class="input-error">请输入5-16位英文字母和数字组成的密码
         </div>
-        <button class="btn" type="submit" name="submit">注册</button>
-      </form>
-    </div>
-
-    <div class="QQ_wechat">
-      <a id = "QQ_icon" href="#">QQ登录</a>
-      <a id = "wechat_icon" href="#">微信登录</a>
-    </div>
+      </div>
+      <button class="btn" type="submit" name="submit">注册</button>
+    </form>
   </div>
+
+  <div class="QQ_wechat">
+    <a id = "QQ_icon" href="#">QQ登录</a>
+    <a id = "wechat_icon" href="#">微信登录</a>
+  </div>
+</div>
 
 <script src="js/jquery-3.3.1.min.js" charset="utf-8"></script>
 <script src="js/validator.js" charset="utf-8"></script>
