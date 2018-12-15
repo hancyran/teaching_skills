@@ -5,19 +5,33 @@
 }
 body
 {
-  background-image: url('../img/bg.jpg');
+  background-image: url('../../img/bg7.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
 }
-
-
+.nav
+{
+  display: inline-block;
+  background: transparent;
+  color: #fff;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+.nav a
+{
+  color:#fff;
+  text-decoration:none;
+  margin:10px;
+  background: color
+}
 .wrap
 {
-
+  position: absolute;
+  top:100px;
   width: 30em;
   background: #fff;
-  margin:0 auto;
-  margin-top:200px;
+  margin-left: 60%;
   max-width: 1000px;
   opacity: 0.95;
   display: none;
@@ -30,19 +44,11 @@ body
 }
 .wrap .header
 {
-  background: #6DD5FA;
-  margin-top: 30px;
-  padding: 10px;
+  background: rgba(0, 0, 0, 0.1);
 }
 .wrap .header small
 {
   margin-left: 15px;
-  font-size: 20%;
-}
-
-.wrap .header small a
-{
-  color:#fff;
 }
 .wrap .header h1
 {
@@ -52,10 +58,19 @@ body
   font-family: 'youyuan';
 }
 
+.header
+{
+  margin-top: 30px;
+  padding: 10px;
+}
+.header small
+{
+  font-size: 20%;
+}
 .input-wrap
 {
   /* margin-bottom: 5px; */
-  padding:10px;
+  padding:20px;
 }
 .input-wrap label
 {
@@ -80,14 +95,14 @@ body
   margin: 0 auto;
   text-align: center;
   border: 0;
-  background-color:#6DD5FA;
+  background-color:#eee;
   outline: none;
   padding: 10px;
   border-radius: 20%;
 }
 .btn:hover
 {
-  background: #2980B9;
+  background: #999;
 }
 .input-control:enabled
 {

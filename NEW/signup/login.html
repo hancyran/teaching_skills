@@ -7,59 +7,40 @@
   <title>登录啦！</title>
   <link rel="icon" href="img/heart.png">
   <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/8.0.0/normalize.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style0.css">
+  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header class="header-section">
-    <div class="header-warp">
-      <div class="container">
-        <a href="./" class="site-logo">
-          <img src="img/logo.png" style="width:100px">
-        </a>
-        <div class="user-panel">
-          <a href="#">登录</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">注册</a>
-        </div>
-        <div class="nav-switch">
-          <i class="fa fa-bars"></i>
-        </div>
-        <ul class="main-menu">
-          <li><a href="about.html">关于我们</a></li>
-          <li><a href="courses.html">课程总览</a></li>
-          <li><a href="blog.html">新闻中心</a></li>
-          <li><a href="contact.html">联系方式</a></li>
-        </ul>
-      </div>
+  <div class="nav">
+    <a href="../">
+      <img src="../img/VLogo.png" alt="logo" style="width: 200px">
+    </a>
+  </div>
+  <div class="wrap wrap-sm" id="mainCard" style="">
+    <div class="header">
+      <h1>登 录<small>还没有账号？<a href="signup.html">注册</a></small></h1>
     </div>
-  </header>
 
+    <div class="login-form form"  >
+      <form id="login" class="" action="./Account.php?do=login" method="post">
+        <div class="input-wrap">
+          <label for="username">用户名</label>
+          <input name='username'  type="text" class="input-control" value="">
+        </div>
+        <div class="input-wrap">
+          <label for="password">密码</label>
+          <input name='password'  type="password" class="input-control" value="">
+        </div>
+        <button class="btn" type="submit" name="submit">登录</button>
+        <a id ="forgetPass" href="#">忘记密码？</a>
+      </form>
+    </div>
 
-<div class="wrap wrap-sm" id="mainCard" style="">
-  <div class="header">
-    <h1>登 录<small>还没有账号？<a href="signup.html">注册</a></small></h1>
+    <div class="QQ_wechat">
+      <a id = "QQ_icon" href="#">QQ登录</a>
+      <a id = "wechat_icon" href="#">微信登录</a>
+    </div>
   </div>
-
-  <div class="login-form form"  >
-    <form id="login" class="" action="php/Account.php?do=login" method="post">
-      <div class="input-wrap">
-        <label for="username">用户名</label>
-        <input name='username'  type="text" class="input-control" value="">
-      </div>
-      <div class="input-wrap">
-        <label for="password">密码</label>
-        <input name='password'  type="password" class="input-control" value="">
-      </div>
-      <button class="btn" type="submit" name="submit">登录</button>
-      <a id ="forgetPass" href="#">忘记密码？</a>
-    </form>
-  </div>
-
-  <div class="QQ_wechat">
-    <a id = "QQ_icon" href="#">QQ登录</a>
-    <a id = "wechat_icon" href="#">微信登录</a>
-  </div>
-</div>
 
 <script src="js/jquery-3.3.1.min.js" charset="utf-8"></script>
 <!-- <script src="js/validator.js" charset="utf-8"></script> -->
