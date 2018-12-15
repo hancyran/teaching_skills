@@ -1,13 +1,14 @@
 <?php
+include 'UserInfo.php';
 //测试
 $time = time()+24*60*60;
 setCookie("uid", '1000', $time, "/"); //设置COOKIE
 setCookie("username", 'karen', $time, "/"); //设置一个用户名COOKIE
 setCookie("isLogin", 1, $time, "/");
 
-
-include 'UserInfo.php';
 $user = new UserInfo();
+
+
 $user->set('gender','女');
 $user->set('QQ','2559837097');
 $user->set('tel','131--------');
@@ -177,7 +178,7 @@ $user->set('balance',0);
    </div>
 
  <!-- <script src="js/main.js" charset="utf-8"></script> -->
- <script src="../js/jquery-3.3.1.min.js"></script>
+ <script src="../js/jquery-3.2.1.min.js"></script>
 <script src="../js/jquery.cookie.js" charset="utf-8"></script>
  <script>
  if($.cookie("uid"))
