@@ -1,23 +1,23 @@
 <?php
-
 session_start();
-	include 'psql.php';
-    $buyer_id=$_SESSION['buyer_id'] = "张三";
-    $sum = $_GET["sum"];
+include 'psql.php';
 
-   
-	$sql ="SELECT * FROM cart where buyer_id ='{$buyer_id}'";
-    $ret = pg_query($db, $sql);
-    if (!$ret) {
-       echo pg_last_error($db);
-   }
-/*    else {
-      echo "Table created successfully\n";
-   } */
-   //pg_close($db);
-//    $data=pg_fetch_array($ret);
+$buyer_id=$_SESSION['buyer_id'] = 1;
+$sum = $_GET["sum"];
+
+$sql ="SELECT * FROM cart where buyer_id ='{$buyer_id}'";
+$ret = pg_query($db, $sql);
+if (!$ret) {
+    echo pg_last_error($db);
+}
+/* else {
+    echo "Table created successfully\n";
+} */
+// pg_close($db);
+// $data=pg_fetch_array($ret);
+
 ?>
-<!DOCTYPE html>
+
 <html>
 	<head lang="en">
 		<meta charset="utf-8" />
@@ -110,30 +110,23 @@ session_start();
 						<h3>订单内容<a href="cart.php" class="fr">返回购物车</a></h3>
                         <!--------ul---------------->
                         <?php while($data = pg_fetch_array($ret)){
+							$sql2 ="SELECT * FROM order_info where id ='{$data['id']}'";
+							$ret2 = pg_query($db, $sql2);
+							$data2 = pg_fetch_array($ret2);
                         ?>
 						<ul class="clearfix">
 							<li class="fl">
-								<img src="<?php echo $data["image"]?>">
+								<img src="<?php echo $data2["class_image"]?>">
 							</li>
 							<li class="fl">
-								<p><?php echo $data["name"]?></p>
+								<p><?php echo $data2["class_name"]?></p>
 								<p>数量：<?php echo $data["num"]?></p>
 							</li>
-							<li class="fr">￥<?php echo $data["num"] * $data["price"]?></li>
+							<li class="fr">￥<?php echo $data["num"] * $data2["price"]?></li>
                         </ul>
                         <?php
                         }
                         ?>
-						<!-- <ul class="clearfix">
-							<li class="fl">
-								<img src="img/sjjg.PNG">
-							</li>
-							<li class="fl">
-								<p>数据结构</p>
-								<p>数量：1</p>
-							</li>
-							<li class="fr">￥60</li>
-						</ul> -->
 					</div>
 					<!--------tips---------------->
 					<!-- <div class="tips">

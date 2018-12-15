@@ -23,7 +23,7 @@ class DB{
   }
   public function query($sq){
     $this->result= $this->db->query($sq);
-    $this->result->setFetchMode(PDO::FETCH_ASSOC);
+    // $this->result->setFetchMode(PDO::FETCH_ASSOC);
     if(!$this->result){
       print "Query not valid";
     }

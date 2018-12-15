@@ -3,12 +3,12 @@
 	include 'psql.php';
     //1.接收参数并且处理参数
     $id = intval($_POST['id']);
-    var_dump($id);
+    //var_dump($id);
     //$buyer_id = $_SESSION['buyer_id'];
     //$id = "1";
-    $buyer_id ="张三";
+    $buyer_id = 1;
+
     //2.删除数据表
-    
     $sql ="DELETE FROM cart WHERE buyer_id ='{$buyer_id}' and id='{$id}'";
     $data = pg_query($db, $sql);
     
