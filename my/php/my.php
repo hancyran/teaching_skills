@@ -27,13 +27,31 @@ $user->set('balance',0);
    <title>我的授渔</title>
    <link rel="stylesheet" href="../css/bootstrap.min.css">
    <link rel="stylesheet" href="../css/my.css">
+   <link rel="stylesheet" href="../../NEW/css/style.css">
  </head>
  <body>
-   <div class="navbar navbar-default">
-     <div class="logo">
-       授  渔
-     </div>
-   </div>
+   <!-- Header section -->
+ 	<header class="header-section">
+ 		<div class="header-warp">
+ 			<div class="container">
+ 				<a href="./" class="site-logo">
+ 					<img src="img/logo.png" style="width:100px">
+ 				</a>
+ 				<div class="user-panel">
+ 					<a href="signup/login.html">登录</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="signup/signup.html">注册</a>
+ 				</div>
+ 				<div class="nav-switch">
+ 					<i class="fa fa-bars"></i>
+ 				</div>
+ 				<ul class="main-menu">
+ 					<li><a href="about.html">关于我们</a></li>
+ 					<li><a href="courses.php?course=&page=1">课程总览</a></li>
+ 					<li><a href="blog.html">新闻中心</a></li>
+ 					<li><a href="contact.html">联系方式</a></li>
+ 				</ul>
+ 			</div>
+ 		</div>
+ 	</header>
 
    <div class="container">
      <div class="row">
