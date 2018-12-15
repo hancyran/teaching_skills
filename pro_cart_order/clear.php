@@ -2,7 +2,7 @@
     //将该用户下的所有购物车数据删除
     session_start();
 	include 'psql.php';
-    $buyer_id = $_SESSION['buyer_id'];
+    $buyer_id = $_SESSION['buyer_id']=1;
 
    
     $sql ="DELETE FROM cart WHERE buyer_id ='{$buyer_id}'";

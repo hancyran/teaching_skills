@@ -3,10 +3,10 @@
 	include 'psql.php';
    $_SESSION['buyer_id'] = "张三";
 
-   $id="1";
+   $id=1;
     
    
-   $sql ="SELECT * FROM pro where id='{$id}'";
+   $sql ="SELECT * FROM order_info where id='{$id}'";
    $ret = pg_query($db, $sql);
    if (!$ret) {
        echo pg_last_error($db);
@@ -14,8 +14,12 @@
 /*    else {
       echo "Table created successfully\n";
    } */
-   pg_close($db);
-   $row = pg_fetch_array($ret)
+//    pg_close($db);
+   $row = pg_fetch_array($ret);
+
+   $sqlS ="SELECT * FROM seller_info where id='{$row['seller_id']}'";
+   $retS = pg_query($db, $sqlS);
+   $rowS = pg_fetch_array($retS);
 ?>
 <html>
 	<head>
@@ -33,42 +37,42 @@
 			<h1>授渔</h1>
 		</div> -->
 		<!-- Header section -->
-	<!-- <div class="header-section">
-		<div class="header-warp">
-			<div class="container">
-				<a href="./" class="site-logo">
-					<img src="img/logo.png" style="width:100px">
-				</a>
-				<div class="user-panel">
-					<a href="signup/signup.html">登录</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="signup/login.html">注册</a>
+		<!-- <div class="header-section">
+			<div class="header-warp">
+				<div class="container">
+					<a href="./" class="site-logo">
+						<img src="img/logo.png" style="width:100px">
+					</a>
+					<div class="user-panel">
+						<a href="signup/signup.html">登录</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="signup/login.html">注册</a>
+					</div>
+					<div class="nav-switch">
+						<i class="fa fa-bars"></i>
+					</div>
+					<ul class="main-menu">
+						<li><a href="about.html">关于我们</a></li>
+						<li><a href="courses.html">课程总览</a></li>
+						<li><a href="blog.html">新闻中心</a></li>
+						<li><a href="contact.html">联系方式</a></li>
+					</ul>
 				</div>
-				<div class="nav-switch">
-					<i class="fa fa-bars"></i>
-				</div>
-				<ul class="main-menu">
-					<li><a href="about.html">关于我们</a></li>
-					<li><a href="courses.html">课程总览</a></li>
-					<li><a href="blog.html">新闻中心</a></li>
-					<li><a href="contact.html">联系方式</a></li>
-				</ul>
 			</div>
-		</div>
-</div> -->
+		</div> -->
 		<!-----------------------Detail------------------------------>
 		<div class="detCon">
 			<div class="proDet wrapper">
 				<div class="proCon clearfix">
 					<div class="proImg fl">
-						<img class="det" src="<?php echo $row["image"]?>" />
+						<img class="det" src="<?php echo $row["class_image"]?>" />
 					</div>
 					<div class="fl intro">
 						<div class="title">
-							<h4><?php echo $row["name"]?></h4>
+							<h4><?php echo $row["class_name"]?></h4>
 							<p><?php echo $row["description"]?></p>
 							<span>￥<?php echo $row["price"]?></span>
 						</div>
 						<div class="proIntro">
-							<p>数量&nbsp;&nbsp;库存<span><?php echo $row["stock"]?></span>件</p>
+							<p>数量&nbsp;&nbsp;库存<span><?php echo $row["class_num"]?></span>件</p>
 							<div class="num clearfix">
 								<img class="fl psub" src="img/sub.jpg">
 								<span class="fl" contentEditable="true" id="proNum">1</span>
@@ -128,13 +132,13 @@
 					</div>
 					<div class="fr seller">
 						<div class="image">
-							<img class="fr" src="<?php echo $row["timg"]?>" />
+							<img class="fr" src="img/wstx.PNG" />
 						</div>
 						<div class="allInfo">
 							<div class="fr info">
-								<span><?php echo $row["tname"]?></span>
-							 	<p><?php echo $row["tmajor"]?></p>
-								<p><?php echo $row["texp"]?></p>
+								<span><?php echo $rowS["real_name"]?></span>
+							 	<p>计算机专业</p>
+								<p>一些经历</p>
 							</div>	
 						</div>
 					</div>
@@ -149,14 +153,8 @@
 				</div>
 				<div class="msgAll">
 					<div class="msgImgs">
-						<?php
-                         $imgs = explode("|", $row['detail']);
-                         for ($i = 0; $i < count($imgs); $i++) {
-                             ?>
-						<img src="<?php echo $imgs[$i]?>">
-						<?php
-                         }
-                         ?>
+						<img src="img/sjkyl.PNG">
+						<img src="img/sjkyl.PNG">
 					</div>
 					<div class="eva">
 						<div class="per clearfix">

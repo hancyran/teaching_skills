@@ -1,24 +1,24 @@
 <?php
 session_start();
 include 'psql.php';
+
 $num = $_GET["num"];
 $id = $_GET["id"];
-
-	$buyer_id=$_SESSION['buyer_id'] = "张三";
+$buyer_id=$_SESSION['buyer_id'] = 1;
 
    
-	$sql ="SELECT * FROM pro where id ='{$id}'";
-    $ret = pg_query($db, $sql);
-    if (!$ret) {
-       echo pg_last_error($db);
-   }
-/*    else {
-      echo "Table created successfully\n";
-   } */
-   //pg_close($db);
-   $data=pg_fetch_array($ret);
+$sql ="SELECT * FROM order_info where id ='{$id}'";
+$ret = pg_query($db, $sql);
+if (!$ret) {
+    echo pg_last_error($db);
+}
+/* else {
+    echo "Table created successfully\n";
+} */
+// pg_close($db);
+$data=pg_fetch_array($ret);
 ?>
-<!DOCTYPE html>
+
 <html>
 	<head lang="en">
 		<meta charset="utf-8" />
@@ -112,24 +112,14 @@ $id = $_GET["id"];
 						<!--------ul---------------->
 						<ul class="clearfix">
 							<li class="fl">
-								<img src="<?php echo $data["image"]?>">
+								<img src="<?php echo $data["class_image"]?>">
 							</li>
 							<li class="fl">
-								<p><?php echo $data["name"]?></p>
+								<p><?php echo $data["class_name"]?></p>
 								<p>数量：<?php echo $num?></p>
 							</li>
 							<li class="fr">￥<?php echo $num * $data["price"]?></li>
 						</ul>
-						<!-- <ul class="clearfix">
-							<li class="fl">
-								<img src="img/sjjg.PNG">
-							</li>
-							<li class="fl">
-								<p>数据结构</p>
-								<p>数量：1</p>
-							</li>
-							<li class="fr">￥60</li>
-						</ul> -->
 					</div>
 					<!--------tips---------------->
 					<!-- <div class="tips">

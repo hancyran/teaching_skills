@@ -41,7 +41,7 @@ $(function(){
 			zg();
 		}
 		$.ajax({
-			url:"/test1/changeNum.php",
+			url:"/123/pro_cart_order/changeNum.php",
 			type:"post",
 			data:{
 					"num":num,
@@ -70,7 +70,7 @@ $(function(){
 			jisuan();
 			zg();
 			$.ajax({
-				url:"/test1/changeNum.php",
+				url:"/123/pro_cart_order/changeNum.php",
 				type:"post",
 				data:{
 						"num":num,
@@ -190,7 +190,7 @@ $(function(){
 			$('.cer').click(function(){
 				// alert("test");
 				$.ajax({
-					url:"/test1/delete.php",
+					url:"/123/pro_cart_order/changeNum.php",
 					type:"post",
 					data:{
 							"id": id
@@ -228,7 +228,7 @@ $(function(){
 				$(".tipDel").show();
 				$('.cer').click(function(){
 					$.ajax({
-						url:"/test1/clear.php",
+						url:"/123/pro_cart_order/changeNum.php",
 						type:"post",
 						success:function(response){
 							if(response.errno == -1){

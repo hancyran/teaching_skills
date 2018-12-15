@@ -1,20 +1,18 @@
 ﻿<?php
-	
-	session_start();
-	include 'psql.php';
-	$buyer_id=$_SESSION['buyer_id'] = "张三";
+session_start();
+include 'psql.php';
 
-
-	$sql ="SELECT * FROM cart where buyer_id ='{$buyer_id}'";
-   $ret = pg_query($db, $sql);
-   if (!$ret) {
-       echo pg_last_error($db);
-   }
-/*    else {
-      echo "Table created successfully\n";
-   } */
-   //pg_close($db);
-   $numRows=pg_num_rows($ret);
+$buyer_id=$_SESSION['buyer_id'] = 1;
+$sql ="SELECT * FROM cart where buyer_id ='{$buyer_id}'";
+$ret = pg_query($db, $sql);
+if (!$ret) {
+    echo pg_last_error($db);
+}
+/* else {
+    echo "Table created successfully\n";
+} */
+// pg_close($db);
+$numRows=pg_num_rows($ret);
 ?>
 
 
@@ -31,13 +29,6 @@
 			<h1>授渔</h1>
 		</div> -->
 		<div class="cart mt">
-			<!-----------------logo------------------->
-			<!--<div class="logo">
-				<h1 class="wrapper clearfix">
-					<a href="index.html"><img class="fl" src="img/temp/logo.png"></a>
-					<img class="top" src="img/temp/cartTop01.png">
-				</h1>
-			</div>-->
 			<!-----------------site------------------->
 			<div class="site">
 				<p class=" wrapper clearfix">
@@ -57,6 +48,9 @@
 				<?php
 				if($numRows!=0){
                 while ($row = pg_fetch_array($ret)) {
+					$sql2 ="SELECT * FROM order_info where id ='{$row['id']}'";
+					$ret2 = pg_query($db, $sql2);
+					$row2 = pg_fetch_array($ret2);
                 ?>
 				<div class="th" id="CarProList">
 					<div class="pro clearfix">
@@ -66,14 +60,14 @@
 						</label>
 						<a class="fl" href="#">
 							<dl class="clearfix">
-								<dt class="fl"><img src="<?php echo $row["image"]?>"></dt>
+								<dt class="fl"><img src="<?php echo $row2["class_image"]?>"></dt>
 								<dd class="fl">
-									<p><?php echo $row["name"]?></p>
+									<p><?php echo $row2["class_name"]?></p>
 								</dd>
 							</dl>
 						</a>
 					</div>
-					<div class="price">￥<?php echo $row["price"]?></div>
+					<div class="price">￥<?php echo $row2["price"]?></div>
 					<div class="number">
 						<p class="num clearfix">
 							<img class="fl sub" src="img/sub.jpg">
@@ -81,7 +75,7 @@
 							<img class="fl add" src="img/add.jpg">
 						</p>
 					</div>
-					<div class="price sAll">￥<?php echo number_format($row["price"]*$row["num"],2)?></div>
+					<div class="price sAll">￥<?php echo number_format($row2["price"]*$row["num"],2)?></div>
 					<div class="price"><a class="del"  data="<?php echo $row['id'] ?>" href="#2"><span>删除</span></a></div>
 				</div>
 				<?php
@@ -211,7 +205,6 @@
 				</div>
 			</div>
 		</div>
-</html>
 		
 		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/pro.js" type="text/javascript" charset="utf-8"></script>
@@ -244,3 +237,4 @@
 			}
 		</script>
 	</body>
+</html>

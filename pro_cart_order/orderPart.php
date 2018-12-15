@@ -1,26 +1,26 @@
 <?php
-
 session_start();
-	include 'psql.php';
-    $buyer_id=$_SESSION['buyer_id'] = "张三";
-    $sum = $_GET["sum"];
-    $arr = $_GET["arr"];
-    $arr = explode(',', $arr); 
-    $len = $_GET["len"];
+include 'psql.php';
+
+$buyer_id=$_SESSION['buyer_id'] = 1;
+$sum = $_GET["sum"];
+$arr = $_GET["arr"];
+$arr = explode(',', $arr); 
+$len = $_GET["len"];
 
   
-	$sql ="SELECT * FROM cart where buyer_id ='{$buyer_id}'";
-    $ret = pg_query($db, $sql);
-    if (!$ret) {
-       echo pg_last_error($db);
-   }
-/*    else {
-      echo "Table created successfully\n";
-   } */
-   //pg_close($db);
-//    $data=pg_fetch_array($ret);
+// $sql ="SELECT * FROM cart where buyer_id ='{$buyer_id}'";
+// $ret = pg_query($db, $sql);
+// if (!$ret) {
+//     echo pg_last_error($db);
+// }
+/* else {
+    echo "Table created successfully\n";
+} */
+// pg_close($db);
+// $data=pg_fetch_array($ret);
 ?>
-<!DOCTYPE html>
+
 <html>
 	<head lang="en">
 		<meta charset="utf-8" />
@@ -114,20 +114,23 @@ session_start();
                         <!--------ul---------------->
                         <?php 
                         for ($i=0;$i<$len;$i++) {
-                            $sql ="SELECT * FROM cart where buyer_id ='{$buyer_id}'and id='{$arr[$i]}'";
+                            $sql ="SELECT * FROM order_info where id='{$arr[$i]}'";
                             $ret = pg_query($db, $sql);
-                            $data = pg_fetch_array($ret);
+							$data = pg_fetch_array($ret);
+							$sql2 ="SELECT * FROM cart where buyer_id ='{$buyer_id}'and id='{$arr[$i]}'";
+                            $ret2 = pg_query($db, $sql2);
+							$data2 = pg_fetch_array($ret2);
                             // while ($data = pg_fetch_array($ret)) {
-                                ?>
+                        ?>
 						<ul class="clearfix">
 							<li class="fl">
-								<img src="<?php echo $data["image"]?>">
+								<img src="<?php echo $data["class_image"]?>">
 							</li>
 							<li class="fl">
-								<p><?php echo $data["name"]?></p>
-								<p>数量：<?php echo $data["num"];?></p>
+								<p><?php echo $data["class_name"]?></p>
+								<p>数量：<?php echo $data2["num"];?></p>
 							</li>
-							<li class="fr">￥<?php echo $data["num"] * $data["price"]?></li>
+							<li class="fr">￥<?php echo $data2["num"] * $data["price"]?></li>
                         </ul>
                         <?php
                             // }
