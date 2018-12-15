@@ -28,13 +28,9 @@ $user->set('balance',0);
    <title>我的授渔</title>
    <link rel="stylesheet" href="../css/bootstrap.min.css">
    <link rel="stylesheet" href="../css/my.css">
- </head>
- <body>
-
    <link rel="stylesheet" href="../css/style.css">
  </head>
  <body>
-
    <header class="header-section narrow">
      <div class="header-warp narrow-warp">
        <div class="container wide-container">
@@ -56,7 +52,7 @@ $user->set('balance',0);
        </div>
      </div>
    </header>
->>>>>>> bd8a665f998c93a7eaaf7da605a2b0b5d9481d7e
+
 
    <div class="container main-container">
      <div class="row">
@@ -187,7 +183,7 @@ $user->set('balance',0);
  if($.cookie("uid"))
  {
    var name = $.cookie("username");
-   $('.user-panel').html("<a href='#'>hello!"+name+"~&nbsp;</a><a href='signup/Account.php?do=logout'>退出登录</a>");
+   $('.user-panel').html("<a href='#'>hello!"+name+"~&nbsp;</a><a href='../php/Account.php?do=logout'>退出登录</a>");
  }
  </script>
  </body>
