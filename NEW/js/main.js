@@ -1,18 +1,10 @@
-/* =================================
-------------------------------------
-	Academica - Learning Page Template
-	Version: 1.0
- ------------------------------------ 
- ====================================*/
-
-
 'use strict';
 
 $(window).on('load', function() {
 	/*------------------
 		Preloder
 	--------------------*/
-	$(".loader").fadeOut(); 
+	$(".loader").fadeOut();
 	$("#preloder").delay(400).fadeOut("slow");
 
 });
@@ -141,4 +133,3 @@ $(window).on('load', function() {
 
 
 })(jQuery);
-
