@@ -5,6 +5,18 @@ $search_arr = $_GET;
 $search= new search($search_arr);
 //get the number of search results
 $num_result= $search->getSearchResultNum();
+//default max number of displayed courses: 9
+$max_page= ceil($num_result / 9) ;
+$page= (int)$_GET['page'];
+//start number of course
+$start_order= ($page-1) * 9;
+//end number of course
+if ($start_order+9 >= $num_result) {
+	$end_order= $num_result;
+}
+else {
+	$end_order= $start_order + 9;
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +58,7 @@ $num_result= $search->getSearchResultNum();
 				</div>
 				<ul class="main-menu">
 					<li><a href="about.html">关于我们</a></li>
-					<li><a href="courses.html">课程总览</a></li>
+					<li><a href="courses.php?course=&page=1">课程总览</a></li>
 					<li><a href="blog.html">新闻中心</a></li>
 					<li><a href="contact.html">联系方式</a></li>
 				</ul>
@@ -70,12 +82,13 @@ $num_result= $search->getSearchResultNum();
 		<div class="msf-warp">
 			<div class="container">
 				<h5>查询课程</h5>
-				<form class="multi-search-form">
+				<form class="multi-search-form" action="courses.php">
 					<input type="text" name="city" placeholder="所在城市">
 					<input type="text" name="district" placeholder="所在地区">
 					<input type="text" name="teacher" placeholder="授课人">
 					<input type="text" name="price" placeholder="价格">
-					<input type="text" name="course" placeholder="课程关键字">
+					<input type="text" name="course" placeholder="课程关键字" autocomplete="off" autofocus>
+					<input type="hidden" name="page" value="1">
 					<button class="site-btn">查询<i class="fa fa-angle-right"></i></button>
 				</form>
 			</div>
@@ -91,59 +104,66 @@ $num_result= $search->getSearchResultNum();
 				<span>只为最优课程</span>
 				<h2>搜索结果</h2>
 				<span>共筛选<?php echo $num_result?>条课程</span>
+				<h5 id="none_of_course">尚未此课程，我们正在努力扩大课程范围来帮您O(∩_∩)O！<br><br>敬请谅解</h5>
 			</div>
 			<div class="row courses-page">
 				<!--
 				php loop code
 			-->
-				<?php for ($i=0; $i<$num_result ; $i++) {
+				<?php for ($i= $start_order; $i<$end_order ; $i++) {
 					$search->getRowInOrderInfo();
 					$course= $search->seller_course;
 					$seller_school= $search->seller_school;
 					$seller_city= $search->seller_city;
-					$visit_time= $search->
+					$seller_img= $search->seller_img;
+					$seller_username= $search->seller_username;
 				?>
 				<!-- course -->
 				<div class="col-lg-4 col-md-6">
-					<div class="course-item">
-						<figure class="course-preview">
-							<!-- course image-->
-							<img src="img/courses/5.jpg" alt="course">
-							<!-- course price -->
-							<div class="price"><?php echo $course['price'] ?></div>
-						</figure>
-						<div class="course-content">
-							<div class="cc-text">
-								<!-- coures name -->
-								<h5><?php echo $course['class_name'] ?></h5>
-								<h5>&nbsp;</h5>
-								<!-- description -->
-								<p>为那些想要入门设计或是对于ps日常应用比较热爱的同学准备</p>
-								<span><i class="flaticon-student-2"></i>已售课时 20</span>
-								<span><i class="flaticon-placeholder"></i>浏览数 <?php echo $course['visit_time'] ?></span>
-								<!-- course rate -->
-								<div class="rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star i-fade"></i>
+					<form class="course-item" action="single.php" method="post">
+						<input type="hidden" name="order_id" value="<?php echo $course['id'] ?>">
+						<button type="submit" name="button" id="order_btn">
+								<figure class="course-preview">
+									<!-- course image-->
+									<img src="img/courses/5.jpg" alt="course">
+									<!-- course price -->
+									<div class="price"><?php echo $course['price'] ?> / 时</div>
+								</figure>
+								<div class="course-content">
+									<div class="cc-text">
+										<!-- coures name -->
+										<h5><?php echo $course['class_name'] ?></h5>
+										<h5>&nbsp;</h5>
+										<!-- description -->
+										<p>为那些想要入门设计或是对于ps日常应用比较热爱的同学准备</p>
+										<span><i class="flaticon-student-2"></i>已售课时 20</span>
+										<span><i class="flaticon-placeholder"></i>浏览数 <?php echo $course['visit_time'] ?></span>
+									</div>
+									<div class="seller-info rating">
+										<!-- teacher image -->
+										<div class="seller-pic set-bg" data-setbg="img/user/<?php echo $seller_img ?>.jpg"></div>
+										<!-- teacher info, including school, located city-->
+										<h6><?php echo $seller_username ?>- <span>发布学校: <?php echo $seller_school ?> 城市: <?php echo $seller_city ?></span><br>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star i-fade"></i>
+										</h6>
+									</div>
 								</div>
-							</div>
-							<div class="seller-info">
-								<!-- teacher image -->
-								<div class="seller-pic set-bg" data-setbg="img/courses/sellers/1.jpg"></div>
-								<!-- teacher info, including school, located city-->
-								<h6>Tom- <span>所在学校: <?php echo $seller_school ?> 城市: <?php echo $seller_city ?></span></h6>
-							</div>
-						</div>
-					</div>
+						</button>
+					</form>
 				</div>
 			<?php } ?>
 			</div>
-			<div class="text-center pt-2">
-				<button class="site-btn">Load More <i class="fa fa-angle-right"></i></button>
-			</div>
+			<form class="text-center pt-2" action="courses.php" method="get">
+				<input type="hidden" name="course" placeholder="课程关键字" id="course">
+				<input type="hidden" name="page" id="page">
+				<button type="submit" class="site-btn last-page"><i class="fa fa-angle-left"></i> 上一页</button>
+				<span id="page-counter">第 <?php echo $page ?> / <?php echo $max_page ?> 页</span>
+				<button type="submit" class="site-btn next-page">下一页 <i class="fa fa-angle-right"></i></button>
+			</form>
 		</div>
 	</section>
 	<!-- Courses section end -->
@@ -235,8 +255,33 @@ $num_result= $search->getSearchResultNum();
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/circle-progress.min.js"></script>
 	<script src="js/main.js"></script>
-
-
+	<script src="js/jquery.more.js"></script>
+	<script>
+	$(function() {
+		if (<?php echo $page ?> == 1) {
+			$('.last-page').css('visibility', 'hidden');
+		}
+		if (<?php echo $page ?> == <?php echo $max_page ?>) {
+			$('.next-page').css('visibility', 'hidden');
+		}
+		if (<?php echo $max_page ?> == 0) {
+			$('.last-page').css('visibility', 'hidden');
+			$('.next-page').css('visibility', 'hidden');
+			$('#none_of_course').css('visibility', 'visible');
+		}
+		else {
+			$('#none_of_course').css('visibility', 'hidden');
+		}
+	});
+	$('.last-page').on('click', function(event) {
+		$('#page').val('<?php echo $page-1 ?>');
+		$('#course').val('<?php echo $search_arr['course'] ?>');
+	});
+	$('.next-page').on('click', function(event) {
+		$('#page').val('<?php echo $page+1 ?>');
+		$('#course').val('<?php echo $search_arr['course'] ?>');
+	});
+	</script>
 </body>
 </html>
 <?php

@@ -37,7 +37,7 @@
 				</div>
 				<ul class="main-menu">
 					<li><a href="about.html">关于我们</a></li>
-					<li><a href="courses.html">课程总览</a></li>
+					<li><a href="courses.php?course=&page=1">课程总览</a></li>
 					<li><a href="blog.html">新闻中心</a></li>
 					<li><a href="contact.html">联系方式</a></li>
 				</ul>
@@ -70,11 +70,12 @@
 			<div class="container">
 				<h5>查询课程</h5>
 				<form class="multi-search-form" action="courses.php">
-					<input type="text" placeholder="所在城市">
-					<input type="text" placeholder="所在学校">
-					<input type="text" placeholder="授课人">
-					<input type="text" placeholder="价格区间">
-					<input type="text" name="course" placeholder="课程关键字" autocomplete="off">
+					<input type="text" name="city" placeholder="所在城市">
+					<input type="text" name="district" placeholder="所在地区">
+					<input type="text" name="teacher" placeholder="授课人">
+					<input type="text" name="price" placeholder="价格">
+					<input type="text" name="course" placeholder="课程关键字" autocomplete="off" autofocus>
+					<input type="hidden" name="page" value="1">
 					<button class="site-btn">查询<i class="fa fa-angle-right"></i></button>
 				</form>
 			</div>
@@ -163,7 +164,7 @@
 							<h5>PHOTOSHOP入门</h5>
 							<h5>&nbsp;</h5>
 							<p>为那些想要入门设计或是对于ps日常应用比较热爱的同学准备</p>
-							<span><i class="flaticon-student-2"></i>已售课数 20</span>
+							<span><i class="flaticon-student-2"></i>已售课时 20</span>
 							<span><i class="flaticon-placeholder"></i>浏览数 100</span>
 							<div class="rating">
 								<i class="fa fa-star"></i>
@@ -351,6 +352,10 @@
 	<!-- Fact section -->
 	<section class="fact-section spad">
 		<div class="container">
+			<div class="sec-title text-center">
+				<span>更广泛的服务</span>
+				<h2>网站记录</h2>
+			</div>
 			<div class="row">
 				<div class="col-lg-3 col-sm-6 fact-item">
 					<figure>
@@ -384,31 +389,6 @@
 		</div>
 	</section>
 	<!-- Fact section end -->
-
-
-	<!-- Newslatter section -->
-	<section class="newslatter-section set-bg" data-setbg="img/newslatter-bg.jpg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3">
-					<div class="sec-title text-white sec-style-2">
-						<span>最新通知</span>
-						<h2>自动更新</h2>
-					</div>
-				</div>
-
-				<div class="col-lg-9 nl-form-warp">
-					<form class="newslatter-form">
-						<input type="text" placeholder="Your E-mail">
-						<button class="site-btn">订阅<i class="fa fa-angle-right"></i></button>
-					</form>
-					<p>我们将为你提供最近的一些福利、适合你的特色课程和教师等</p>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Newslatter section end -->
-
 
 
 	<!-- Footer section -->

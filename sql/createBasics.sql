@@ -38,10 +38,12 @@ create table course_info(
   last_update_date timestamp default current_timestamp, /*最后更新时间*/
   primary key(id)
 );
+alter table course_info alter id set default nextval('course_info_id_seq');
 /*user infomation*/
 create table user_info(
   id serial, /*用户id*/
   username varchar(20) not null, /*用户名（可用于登录时身份验证）*/
+  img int default 1,
   gender varchar(5) default 'none', /*用户性别: f -> 女性， m -> 男性*/
   tel varchar(20), /*用户电话*/
   wechat varchar(50), /*用户微信*/
@@ -56,6 +58,7 @@ create table user_info(
   primary key(id),
   foreign key(school_id,campus_id) references school_info(school_id, campus_id)
 );
+alter table user_info alter id set default nextval('user_info_id_seq');
 create table account(
   id serial, /*用户登录的唯一id*/
   user_id int, /*用户登录后关联的用户id*/
@@ -65,10 +68,13 @@ create table account(
   primary key(id),
   foreign key(user_id) references user_info(id)
 );
+alter table account alter id set default nextval('account_id_seq');
 /*seller info*/
 create table seller_info(
   id serial, /*卖家id*/
   uid int, /*卖家的原用户id*/
+  /*
+  self_description varchar(200), 卖家自述*/
   real_name varchar(10), /*卖家真名*/
   real_school_id int, /*卖家真实的学校id*/
   real_campus_id int, /*卖家真实的校区id*/
@@ -79,12 +85,15 @@ create table seller_info(
   foreign key(uid) references user_info(id),
   foreign key(real_school_id,real_campus_id) references school_info(school_id, campus_id)
 );
+alter table seller_info alter id set default nextval('seller_info_id_seq');
 /*course infomation*/
 create table order_info(
   id bigserial/* '商品id' */,
   cid int not null /* '课程类别id' */,
   class_name varchar(20) not null /* '商品名' */,
   description varchar(100) not null /* '商品简介' */,
+  /*
+  content text, 商品详情 */
   school_id int not null /*  '发布学校id' */,
   campus_id int not null /* '发布校区id' */,
   seller_id int not null /* '发布人id' */,
@@ -105,7 +114,7 @@ create table order_info(
   foreign key(buyer_id) references user_info(id),
   foreign key(school_id,campus_id) references school_info(school_id, campus_id)
 );
-
+alter table order_info alter id set default nextval('order_info_id_seq');
 
 /*-------------create triggers to update date from each table after modifying--------------*/
 

@@ -2,7 +2,7 @@
 class DB{
   public static $host= "localhost";
   public static $port= "5432";
-  public static $dbname= "test";
+  public static $dbname= "test1";
   public static $username= "postgres";
   public static $password= "123456";
   public $result;
@@ -23,7 +23,7 @@ class DB{
   }
   public function query($sq){
     $this->result= $this->db->query($sq);
-    $this->result->setFetchMode(PDO::FETCH_ASSOC);
+    // $this->result->setFetchMode(PDO::FETCH_ASSOC);
     if(!$this->result){
       print "Query not valid";
     }
