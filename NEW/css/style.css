@@ -605,6 +605,18 @@ ol {
 	margin-right: 0 !important;
 }
 
+.multi-search-form .no-input #no-input-alert{
+	margin-left: 65%;
+	color: #c13333;
+	font-weight: bold;
+	font-size: 13px;
+}
+.multi-search-form .no-input #no-input-alert-detail{
+	margin-left: 10%;
+	color: #c13333 !important;
+	font-weight: bold;
+	font-size: 13px;
+}
 /*------------------
   Services section
 ---------------------*/
@@ -1081,6 +1093,17 @@ ol {
 	z-index: -100;
 	background-repeat: no-repeat;
 	opacity: 0.4;
+}
+
+.mybgimg{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 1000px;
+	background: url('../img/bgimg1.png');
+	z-index: -100;
+	background-repeat: no-repeat;
+	opacity: 0.3;
 }
 
 .type-section {

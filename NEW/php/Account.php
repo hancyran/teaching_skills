@@ -76,20 +76,20 @@ class Account
         setCookie("isLogin", 1, $time, "/"); // 设置一个登录判断的标记isLogin
         echo '<script type="text/javascript">
         alert("登陆成功！");
-        window.location.href="../index.html";
+        window.location.href="../";
         </script>';//返回主页
       }
       else{
         echo '<script type="text/javascript">
         alert("登录名或密码错误！请重新输入");
-        window.location.href="./login.html";
+        window.location.href="../login/";
         </script>';
       }
     }
     else{
       echo '<script type="text/javascript">
       alert("登录名或密码错误！请重新输入");
-      window.location.href="./login.html";
+      window.location.href="../login/";
       </script>';
     }
   }
@@ -112,13 +112,12 @@ class Account
     if($result_arr){
       echo "<script type='text/javascript'>
       alert('用户名不可用！请重新输入');
-      window.location.href='./signup.html';
+      window.location.href='../signup/';
       </script>";
     }
     else{
       // echo $this->identifier,$this->email;
       $sql="insert into user_info(username,qq) values('$this->identifier','$this->email')";
-      echo $sql;
       $db_o = new DB();
       $db_o->connect();
       $db_o->query($sql);
@@ -134,10 +133,10 @@ class Account
       setCookie("uid", $userid, $time, "/"); //设置COOKIE
       setCookie("username", $username, $time, "/"); //设置一个用户名COOKIE
       setCookie("isLogin", 1, $time, "/"); // 设置一个登录判断的标记isLogin
-      //echo "<script type='text/javascript'>
-      //alert('注册成功！请登录');
-      //window.location.href='../index.html';
-      //</script>";
+      echo "<script type='text/javascript'>
+      alert('注册成功！请登录');
+      window.location.href='../';
+      </script>";
     }
   }
 

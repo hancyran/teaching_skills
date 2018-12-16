@@ -11,10 +11,13 @@ $showDetail->getOrderDetail();
 	<head>
 		<meta charset="UTF-8">
 		<title>授渔</title>
+    <!-- stype sheets -->
 		<link rel="stylesheet" href="../css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="../css/font-awesome.min.css"/>
 		<link rel="stylesheet" href="../css/flaticon.css"/>
 		<link rel="stylesheet" href="../css/owl.carousel.css"/>
+    <link rel="stylesheet" href="../css/animate.css"/>
+    <!-- my style -->
 		<link rel="stylesheet" href="../css/style.css">
 	</head>
 	<body>
@@ -27,7 +30,7 @@ $showDetail->getOrderDetail();
 						<img src="../img/logo.png" style="width:100px">
 					</a>
 					<div class="user-panel">
-						<a href="#">登录</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">注册</a>
+						<a href="../login/">登录</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="../signup/">注册</a>
 					</div>
 					<div class="nav-switch">
 						<i class="fa fa-bars"></i>
@@ -52,8 +55,8 @@ $showDetail->getOrderDetail();
 					<div class="course-type">
 						<span id="type">课程类别: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span id="type1">工科类 / </span><span id="type2">计算机</span>
 					</div>
-					<form class="multi-search-form" action="../search/">
-						<input type="text" name="course" placeholder="课程关键字" autocomplete="off">
+					<form class="multi-search-form" action="../search/" onsubmit="return check()">
+						<input type="text" name="course" id="course_key" placeholder="课程关键字" autocomplete="off">
 						<input type="hidden" name="page" value="1">
 						<button class="site-btn">查询<i class="fa fa-angle-right"></i></button>
 					</form>
@@ -88,8 +91,8 @@ $showDetail->getOrderDetail();
 							</div>
 						</div>
 						<div class="btns clearfix">
-							<a href="#2"><p class="buy fl">立即购买</p></a>
-							<a href="#2"><p class="cart fr">加入购物车</p></a>
+							<a href="../"><p class="buy fl">立即购买</p></a>
+							<a href="../pay/"><p class="cart fr">加入购物车</p></a>
 						</div>
 					</div>
 					<!-- end Product description Section -->
@@ -263,9 +266,26 @@ $showDetail->getOrderDetail();
 
 
 		</div>
-		<script src="../js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/pro.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/cart.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/jquery.cookie.js"></script>
+    <script>
+  		function check(){
+  			if ($('#course_key').val() == "") {
+  				return false;
+  			}
+  			else {
+  				return true;
+  			}
+  		};
+
+    if($.cookie("uid"))
+    {
+      var name = $.cookie("username");
+      $('.user-panel').html("<a href='../my/' target='_blank'><b>"+name+"&nbsp;&nbsp;&nbsp;</b></a> <a href='../php/Account.php?do=logout' style='font-weight:lighter;font-size:14px'>退出</a>");
+    }
+    </script>
 	</body>
 </html>

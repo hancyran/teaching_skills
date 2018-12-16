@@ -1,0 +1,291 @@
+<?php
+include 'showCart.php';
+//test cookie
+$cart_of_order= '1,2,3';
+$cart_of_order_num= '1,1,2';
+setCookie('cart_of_order', $cart_of_order, time() + 24*60*60);
+setCookie('cart_of_order_num', $cart_of_order_num, time() + 24*60*60);
+
+//
+$cookie_arr= $_COOKIE;
+$cart_order_arr= str_split($cart_of_order,',');
+$order_num= count($cart_order_arr);
+
+$cart_order_num_arr= str_split($cart_of_order_num,',');
+//if logged in, ignore cookie and get the cart_arr from DB;
+//else, use the cookie as cart_arr
+
+/*
+$showCart= new showCart($cookie_arr);
+$isLogin= $cookie_arr['isLogin'];
+if ($isLogin == "1") {
+	$cart_arr= $showCart->cart_arr;
+}else {
+	$cart_arr= $_COOKIE;
+}
+*/
+$showCart= new showCart($cart_order_arr);
+
+
+ ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- for-mobile-apps -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>授渔</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="授渔">
+	<meta name="keywords" content="授渔">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Favicon -->
+	<link href="../img/favicon.ico" rel="shortcut icon"/>
+	<!-- Stylesheets -->
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+			function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!-- //for-mobile-apps -->
+	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="../css/pay.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- font-awesome icons -->
+	<link href="../css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../css/style.css">
+	<!-- //font-awesome icons -->
+	<!-- js -->
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/jquery.cookie.js" charset="utf-8"></script>
+</head>
+
+<body>
+
+	<header class="header-section narrow">
+		<div class="header-warp narrow-warp">
+			<div class="container wide-container">
+				<a href="../" class="site-logo">
+					<img src="../img/logo.png" style="width:100px">
+				</a>
+				<div class="user-panel">
+					<a href="../login/">登录</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../signup/">注册</a>
+				</div>
+				<div class="nav-switch">
+					<i class="fa fa-bars"></i>
+				</div>
+				<ul class="main-menu">
+					<li><a href="#">关于我们</a></li>
+					<li><a href="../search/?course=&page=1">课程总览</a></li>
+					<li><a href="#">新闻中心</a></li>
+					<li><a href="#">联系方式</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+
+	<div class="bgimg">
+	</div>
+	<!-- checkout -->
+	<div class="checkout">
+		<div class="container">
+			<h2>购物车: &nbsp;&nbsp;&nbsp;<span id="course_num">共3个课程</span></h2>
+			<div class="checkout-right">
+				<table class="timetable_sub">
+					<thead>
+						<tr>
+							<th>编号</th>
+							<th>课程图</th>
+							<th>课时</th>
+							<th>课程名</th>
+
+							<th>价格</th>
+							<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+						</tr>
+					</thead>
+					<!-- php code -->
+					<?php for ($n=0; $n < $order_num; $n++) {
+
+					}
+
+					 ?>
+					<!-- order -->
+					<tr class="rem-<?php echo $n+1 ?>">
+						<td class="invert">1</td>
+						<td class="invert-image"><a href="single.html"><img src="../img/order/datascience2.jpg" style="width:200px; height:100px" class="img-responsive" /></a></td>
+						<td class="invert">
+							 <div class="quantity">
+								<div class="quantity-select">
+									<div class="entry value-minus">&nbsp;</div>
+									<div class="entry value"><span><?php  ?></span></div>
+									<div class="entry value-plus active">&nbsp;</div>
+								</div>
+							</div>
+						</td>
+						<td class="invert">Tata Salt</td>
+						<td class="invert"><?php  ?></td>
+						<td class="invert">
+							<div class="rem">
+								<div class="close-<?php echo $n+1; ?>"></div>
+							</div>
+							<script>$(document).ready(function(c) {
+								$('.close-<?php echo $n+1 ?>').on('click', function(c){
+									$.cookie('');
+									$('.rem-<?php echo $n+1 ?>').fadeOut('slow', function(c){
+										$('.rem-<?php echo $n+1 ?>').remove();
+									});
+									});
+								});
+						   </script>
+						</td>
+					</tr>
+					<!-- end an order-->
+
+				 <!--quantity-->
+					<script>
+					$('.value-plus').on('click', function(){
+						var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)+1;
+						divUpd.text(newVal);
+					});
+					$('.value-minus').on('click', function(){
+						var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10)-1;
+						if(newVal>=1) divUpd.text(newVal);
+					});
+					</script>
+					<!--quantity-->
+				</table>
+			</div>
+			<div class="checkout-left">
+				<div class="checkout-left-basket">
+					<h4>小结</h4>
+					<ul>
+						<li>Product1 <i>-</i> <span>$15.00 </span></li>
+						<li>Product2 <i>-</i> <span>$25.00 </span></li>
+						<li>Product3 <i>-</i> <span>$29.00 </span></li>
+						<li>Total Service Charges <i>-</i> <span>$15.00</span></li>
+						<li>Total <i>-</i> <span>$84.00</span></li>
+					</ul>
+				</div>
+				<div class="checkout-right-basket">
+					<div class="pay-type">
+						<div class="wechat">
+							<img src="../img/pay/wechatpay.png" style="width:60px;height:50px">
+							<span>微信支付</span>
+						</div>
+						<div class="union">
+							<img src="../img/pay/unionpay.png" style="width:80px;height:40px">
+							<span>银联支付</span>
+						</div>
+						<div class="ali">
+							<img src="../img/pay/alipay.png" style="width:55px;height:55px">
+							<span>支付宝支付</span>
+						</div>
+						<a href="../"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>支付</a>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+<!-- //checkout -->
+
+
+<!-- Footer section -->
+<footer class="footer-section spad pb-0">
+	<div class="container">
+		<div class="text-center">
+			<a href="#" class="site-btn">加入我们<i class="fa fa-angle-right"></i></a>
+		</div>
+		<div class="row text-white spad">
+			<div class="col-lg-3 col-sm-6 footer-widget">
+				<h4>理工科类</h4>
+				<ul>
+					<li><a href="#">人工智能</a></li>
+					<li><a href="#">计算机编程</a></li>
+					<li><a href="#">数据科学</a></li>
+					<li><a href="#">应用数学</a></li>
+					<li><a href="#">电子科技</a></li>
+				</ul>
+			</div>
+			<div class="col-lg-3 col-sm-6 footer-widget">
+				<h4>文科类</h4>
+				<ul>
+					<li><a href="#">外语深造</a></li>
+					<li><a href="#">深入历史</a></li>
+					<li><a href="#">文书磨砺</a></li>
+					<li><a href="#">国内外文学</a></li>
+				</ul>
+			</div>
+			<div class="col-lg-3 col-sm-6 footer-widget">
+				<h4>艺术与设计</h4>
+				<ul>
+					<li><a href="#">平面设计</a></li>
+					<li><a href="#">声乐</a></li>
+					<li><a href="#">动画制作</a></li>
+					<li><a href="#">计算机设计</a></li>
+				</ul>
+			</div>
+			<div class="col-lg-3 col-sm-6 footer-widget">
+				<h4>其他</h4>
+				<ul>
+					<li><a href="#">java</a></li>
+					<li><a href="#">python</a></li>
+					<li><a href="#">c++</a></li>
+					<li><a href="#">JavaScript</a></li>
+					<li><a href="#">php</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer-bottom">
+
+			<div class="social">
+				<a href=""><i class="fa fa-qq"></i></a>
+				<a href=""><i class="fa fa-wechat"></i></a>
+				<a href=""><i class="fa fa-weibo"></i></a>
+			</div>
+			<ul class="footer-menu">
+				<li><a href="about.html">关于我们</a></li>
+				<li><a href="courses.html">课程总览</a></li>
+				<li><a href="blog.html">新闻中心</a></li>
+				<li><a href="contact.html">联系方式</a></li>
+			</ul>
+			<div class="footer-logo">
+				<a href="#">
+					<img src="../img/Wlogo.png" style="width:150px">
+				</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<p class="text-white  text-center">
+					Copyright &copy;<script>document.write(new Date().getFullYear());</script> SHOUYU All rights reserved
+				</p>
+			</div>
+
+		</div>
+	</div>
+</footer>
+<!-- Footer section end -->
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.min.js"></script>
+
+<!-- main slider-banner -->
+<script type="text/javascript">
+	$('.wechat').on('click',  function(event) {
+		$('.wechat').css('border', '2px solid black');
+		$('.union').css('border', '2px solid rgb(230, 230, 230)');
+		$('.ali').css('border', '2px solid rgb(230, 230, 230)');
+	});
+	$('.ali').on('click',  function(event) {
+		$('.ali').css('border', '2px solid black');
+		$('.union').css('border', '2px solid rgb(230, 230, 230)');
+		$('.wechat').css('border', '2px solid rgb(230, 230, 230)');
+	});
+	$('.union').on('click',  function(event) {
+		$('.union').css('border', '2px solid black');
+		$('.wechat').css('border', '2px solid rgb(230, 230, 230)');
+		$('.ali').css('border', '2px solid rgb(230, 230, 230)');
+	});
+</script>
+<!-- //main slider-banner -->
+
+</body>
+</html>

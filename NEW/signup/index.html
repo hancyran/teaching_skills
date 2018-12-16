@@ -20,28 +20,29 @@
   </div>
   <div class="wrap wrap-sm" id="mainCard">
     <div class="header">
-      <h1>注 册<small>已有账号?<a href="../login">登录</a></small></h1>
+      <h1>注 册</h1>
+      <small>已有账号?<a href="../login">登录</a></small>
     </div>
 
     <div class="signup-form form"  >
       <form id="signup" class="" action="../php/Account.php?do=signup" method="post">
         <div class="input-wrap">
           <label for="username">用户名</label>
-          <input name='username' data-rule='pattern:"^[0-9a-zA-z]{3,10}$"|required:true' type="text" class="input-control" value="">
+          <input name='username' data-rule='pattern:"^[0-9a-zA-z]{3,10}$"|required:true' type="text" class="input-control" value="" autocomplete="off">
           <div id = "username-input-error" class="input-error">请输入3-10位英文字母和数字组成的昵称
           </div>
         </div>
 
         <div class="input-wrap">
           <label for="email">邮箱</label>
-          <input name='email' data-rule='minlength:5|required:true'  type="email" class="input-control" value="">
+          <input name='email' data-rule='minlength:5|required:true'  type="email" class="input-control" value="" autocomplete="off">
           <div id ="email-input-error" class="input-error">请输入邮箱地址
           </div>
         </div>
 
         <div class="input-wrap">
           <label for="password">密码</label>
-          <input name='password' data-rule='pattern:"^[0-9a-zA-Z]{5,16}$"|required:true'  type="password" class="input-control" value="">
+          <input name='password' data-rule='pattern:"^[0-9a-zA-Z]{5,16}$"|required:true'  type="password" class="input-control" value="" autocomplete="off">
           <div id = "password-input-error" class="input-error">请输入5-16位英文字母和数字组成的密码
           </div>
         </div>

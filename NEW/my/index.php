@@ -1,20 +1,24 @@
 <?php
+include 'UserInfo.php';
 //测试
-$time = time()+24*60*60;
+/*
+
 setCookie("uid", '1000', $time, "/"); //设置COOKIE
 setCookie("username", 'karen', $time, "/"); //设置一个用户名COOKIE
+*/
+$time = time()+24*60*60;
 setCookie("isLogin", 1, $time, "/");
-
-
-include 'UserInfo.php';
 $user = new UserInfo();
+
+
+
+/*
 $user->set('gender','女');
 $user->set('QQ','2559837097');
 $user->set('tel','131--------');
 $user->set('wechat','wangxin');
-$user->set('baits','233');
 $user->set('balance',0);
-
+*/
 
  ?>
 
@@ -22,55 +26,56 @@ $user->set('balance',0);
  <!DOCTYPE html>
  <html lang="en">
  <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>我的授渔</title>
+   <title>授渔</title>
+ 	<meta charset="UTF-8">
+ 	<meta name="description" content="授渔">
+ 	<meta name="keywords" content="授渔">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 	<!-- Favicon -->
+ 	<link href="../img/favicon.ico" rel="shortcut icon"/>
+  <!-- Stylesheets -->
    <link rel="stylesheet" href="../css/bootstrap.min.css">
    <link rel="stylesheet" href="../css/my.css">
- </head>
- <body>
-
    <link rel="stylesheet" href="../css/style.css">
  </head>
  <body>
-
    <header class="header-section narrow">
      <div class="header-warp narrow-warp">
        <div class="container wide-container">
-         <a href="./" class="site-logo">
+         <a href="../" class="site-logo">
            <img src="../img/logo.png" style="width:100px">
          </a>
          <div class="user-panel">
-           <a href="#">登录</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">注册</a>
+           <a href="../login/">登录</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="../signup/">注册</a>
          </div>
          <div class="nav-switch">
            <i class="fa fa-bars"></i>
          </div>
          <ul class="main-menu">
-           <li><a href="about.html">关于我们</a></li>
-           <li><a href="courses.php?course=&page=1">课程总览</a></li>
-           <li><a href="blog.html">新闻中心</a></li>
-           <li><a href="contact.html">联系方式</a></li>
+           <li><a href="#">关于我们</a></li>
+           <li><a href="../search/?course=&page=1">课程总览</a></li>
+           <li><a href="#">新闻中心</a></li>
+           <li><a href="#">联系方式</a></li>
          </ul>
        </div>
      </div>
    </header>
->>>>>>> bd8a665f998c93a7eaaf7da605a2b0b5d9481d7e
+
+   <div class="mybgimg">
+   </div>
 
    <div class="container main-container">
      <div class="row">
        <div class="col-sm-2">
          <div class="list-group side-bar-left">
-           <a href="#s" class="list-group-item active">全部功能</a>
-           <a href="#" class="list-group-item">我的购物车</a>
+           <a href="./" class="list-group-item active">全部功能</a>
+           <a href="../pay/" class="list-group-item">我的购物车</a>
            <a href="#" class="list-group-item">进行中的课程</a>
-           <a href="shoppingHistory.php" class="list-group-item">历史订单</a>
+           <a href="shoppingHistory/" class="list-group-item">历史订单</a>
            <a href="#" class="list-group-item">我的评价</a>
-           <a href="info.php" class="list-group-item">个人信息</a>
+           <a href="info/" class="list-group-item">个人信息</a>
            <a href="#" class="list-group-item">我的收藏</a>
-           <a href="identification.php" class="list-group-item">信息认证</a>
-
+           <a href="identification/" class="list-group-item">信息认证</a>
          </div>
        </div>
 
@@ -179,15 +184,32 @@ $user->set('balance',0);
        </div>
 
    </div>
+ </div>
+ <footer class="footer-section spad pb-0 narrow-footer">
+   <div class="container">
+       <div class="footer-logo">
+         <a href="#">
+           <img src="../img/Wlogo.png" style="width:130px">
+         </a>
+       </div>
+    <div class="row">
+       <div class="col-12">
+         <p class="text-white  text-center">
+           Copyright &copy;<script>document.write(new Date().getFullYear());</script> SHOUYU All rights reserved
+         </p>
+       </div>
 
+     </div>
+   </div>
+ </footer>
  <!-- <script src="js/main.js" charset="utf-8"></script> -->
- <script src="../js/jquery-3.3.1.min.js"></script>
-<script src="../js/jquery.cookie.js" charset="utf-8"></script>
+ <script src="../js/jquery-3.2.1.min.js"></script>
+ <script src="../js/jquery.cookie.js" charset="utf-8"></script>
  <script>
  if($.cookie("uid"))
  {
    var name = $.cookie("username");
-   $('.user-panel').html("<a href='#'>hello!"+name+"~&nbsp;</a><a href='signup/Account.php?do=logout'>退出登录</a>");
+   $('.user-panel').html("<a href='./'><b>"+name+"&nbsp;&nbsp;&nbsp;</b></a> <a href='../php/Account.php?do=logout' style='font-weight:lighter;font-size:14px'>退出</a>");
  }
  </script>
  </body>

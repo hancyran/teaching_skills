@@ -52,6 +52,8 @@ create table user_info(
   campus_id int, /*用户所在校区id*/
   major varchar(20), /*用户的专业*/
   balance int check (balance >= 0), /*用户的钱包存款*/
+  cart_of_order varchar(500),
+  cart_of_order_num varchar(500),
   verification varchar(10), /*是否验证为卖家*/
   create_date timestamp default current_timestamp, /*用户创建时间*/
   last_update_date timestamp default current_timestamp, /*用户信息更新时间*/

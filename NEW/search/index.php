@@ -51,7 +51,7 @@ else {
 					<img src="../img/logo.png" style="width:100px">
 				</a>
 				<div class="user-panel">
-					<a href="#">登录</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="">注册</a>
+					<a href="../login/">登录</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../signup/">注册</a>
 				</div>
 				<div class="nav-switch">
 					<i class="fa fa-bars"></i>
@@ -82,14 +82,17 @@ else {
 		<div class="msf-warp">
 			<div class="container">
 				<h5>查询课程</h5>
-				<form class="multi-search-form" action="./">
+				<form class="multi-search-form" onsubmit="return check()" action="./">
 					<input type="text" name="city" placeholder="所在城市">
 					<input type="text" name="district" placeholder="所在地区">
 					<input type="text" name="teacher" placeholder="授课人">
 					<input type="text" name="price" placeholder="价格">
-					<input type="text" name="course" placeholder="课程关键字" autocomplete="off" autofocus>
-					<input type="hidden" name="page" value="1">
-					<button class="site-btn">查询<i class="fa fa-angle-right"></i></button>
+					<input type="text" name="course" id="course_key" placeholder="课程关键字" autocomplete="off" autofocus>
+					<input type="hidden" name="page" id="page_key" value="1">
+					<button class="site-btn search-btn">查询<i class="fa fa-angle-right"></i></button>
+					<div class="no-input">
+						<span id="no-input-alert"></span>
+					</div>
 				</form>
 			</div>
 		</div>
@@ -255,8 +258,29 @@ else {
 	<script src="../js/owl.carousel.min.js"></script>
 	<script src="../js/circle-progress.min.js"></script>
 	<script src="../js/main.js"></script>
-	<script src="../js/jquery.more.js"></script>
+	<script src="../js/jquery.cookie.js"></script>
 	<script>
+	$(function(){
+		if ($('#course_key').val() == "") {
+			$('.search-btn').click(function(event) {
+				$('#course_key').css('border', '2px solid #c13333');
+				$('#course_key').addClass('animated shake');
+				$('#no-input-alert').html('该字段不能为空');
+			});
+		} else {
+				$('#course_key').css('border', '1px solid black');
+				$('#course_key').removeClass('animated shake');
+				$('#no-input-alert').html('');
+			};
+	});
+		function check(){
+			if ($('#course_key').val() == "") {
+				return false;
+			}
+			else {
+				return true;
+			}
+		};
 	$(function() {
 		if (<?php echo $page ?> == 1) {
 			$('.last-page').css('visibility', 'hidden');
@@ -281,6 +305,11 @@ else {
 		$('#page').val('<?php echo $page+1 ?>');
 		$('#course').val('<?php echo $search_arr['course'] ?>');
 	});
+	if($.cookie("uid"))
+  {
+    var name = $.cookie("username");
+    $('.user-panel').html("<a href='../my/' target='_blank'><b>"+name+"&nbsp;&nbsp;&nbsp;</b></a> <a href='../php/Account.php?do=logout' style='font-weight:lighter;font-size:14px'>退出</a>");
+  }
 	</script>
 </body>
 </html>
