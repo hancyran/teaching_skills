@@ -5,6 +5,11 @@ $order_arr= $_POST;
 $showDetail= new showDetail($order_arr);
 $showDetail->getOrderDetail();
 
+$cart_of_order= '1,2';
+$cart_of_order_num= '1,3';
+setCookie('cart_of_order', $cart_of_order, time() + 24*60*60, '/');
+setCookie('cart_of_order_num', $cart_of_order_num, time() + 24*60*60, '/') ;
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -92,7 +97,7 @@ $showDetail->getOrderDetail();
 						</div>
 						<div class="btns clearfix">
 							<a href="../"><p class="buy fl">立即购买</p></a>
-							<a href="../pay/"><p class="cart fr">加入购物车</p></a>
+							<a><p class="cart fr">加入购物车</p></a>
 						</div>
 					</div>
 					<!-- end Product description Section -->
@@ -268,10 +273,20 @@ $showDetail->getOrderDetail();
 		</div>
 		<script src="../js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/pro.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/cart.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/cart/pro.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/cart/cart.js" type="text/javascript" charset="utf-8"></script>
     <script src="../js/jquery.cookie.js"></script>
     <script>
+    $(function(){
+      $('.cart').on('click', function(event) {
+        if ($.cookie('cart_of_order')) {
+          var new_cookie = $.cookie('cart_of_order') + '<?php echo $order_arr['order_id'] ?>';
+          $.cookie('cart_of_order', new_cookie);
+          window.location= '../pay';
+        }
+
+      });
+    });
   		function check(){
   			if ($('#course_key').val() == "") {
   				return false;

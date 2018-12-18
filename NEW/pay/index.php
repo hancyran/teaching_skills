@@ -1,13 +1,15 @@
 <?php
 include 'showCart.php';
-//test cookie
-$cart_of_order= '1,2';
-$cart_of_order_num= '1,3';
-setCookie('cart_of_order', $cart_of_order, time() + 24*60*60);
-setCookie('cart_of_order_num', $cart_of_order_num, time() + 24*60*60);
-
 //
 $cookie_arr= $_COOKIE;
+
+
+$cart_of_order= '1,2';
+$cart_of_order_num= '1,3';
+setCookie('cart_of_order', $cart_of_order, time() + 24*60*60, '/');
+setCookie('cart_of_order_num', $cart_of_order_num, time() + 24*60*60, '/') ;
+
+
 $cart_order_arr= explode(',', $cookie_arr['cart_of_order']);
 $order_num= count($cart_order_arr);
 
@@ -59,6 +61,20 @@ $json_cart_of_order_num= json_encode($cart_order_num_arr);
 	<!-- js -->
 	<script src="../js/jquery-3.2.1.min.js"></script>
 	<script src="../js/jquery.cookie.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    function showNothingInCart(){
+      if (cart == "") {
+        $('#showNothingInCart').html('<p style="font-size=30px">购物车为空</p>');
+      }
+    }
+    var cart= <?php echo $json_cart_of_order ?>;
+    var cart_num_of_order= <?php echo $json_cart_of_order_num ?>;
+    for (var i = 0; i < cart.length; i++) {
+      cart[i]= parseInt(cart[i], 10);
+      cart_num_of_order[i]= parseInt(cart_num_of_order[i], 10);
+    };
+    showNothingInCart();
+  </script>
 </head>
 
 <body>
@@ -88,7 +104,7 @@ $json_cart_of_order_num= json_encode($cart_order_num_arr);
 	<div class="bgimg">
 	</div>
 	<!-- checkout -->
-	<div class="checkout">
+	<div class="checkout" style="padding: 0; margin: 200px">
 		<div class="container">
 			<h2>购物车: &nbsp;&nbsp;&nbsp;<span id="course_num"></span></h2>
 			<div class="checkout-right">
@@ -104,6 +120,8 @@ $json_cart_of_order_num= json_encode($cart_order_num_arr);
 							<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
 						</tr>
 					</thead>
+          <div id="showNothingInCart">
+          </div>
 					<!-- php code -->
 					<?php for ($n=0; $n < $order_num; $n++) {
 						$showCart->getOrderInfoInCart();
@@ -112,12 +130,7 @@ $json_cart_of_order_num= json_encode($cart_order_num_arr);
 						$order_id= $showCart->order_id;
 						$num_of_one_order= $cart_order_num_arr[$n];
 						//
-						if ($num_of_one_order == 1) {
-							$showTotalAmount= $showTotalAmount. "<li>$class_name : <span>￥$price </span></li>";
-						}
-						else {
-							$showTotalAmount= $showTotalAmount. "<li>$class_name : <span>$num_of_one_order x ￥$price </span></li>";
-						}
+						$showTotalAmount= $showTotalAmount. "<li>$class_name : <span class='count_and_price'><span class='count' id='count-". ($n+1) ."'>$num_of_one_order</span><span>&nbsp;&nbsp; x ￥</span><span class='price' id='price-". ($n+1) ."'>$price </span></span></li>";
 						$amount += $price*$num_of_one_order;
 					 ?>
 					<!-- order -->
@@ -146,40 +159,48 @@ $json_cart_of_order_num= json_encode($cart_order_num_arr);
 							<div class="rem">
 								<div class="close-<?php echo $n+1; ?>"><img src="../img/pay/close_1.png" alt=""> </div>
 							</div>
-							<script>$(document).ready(function(c) {
-								$('.close-<?php echo $n+1 ?>').on('click', function(c){
-									var order_in_cart= <?php echo $json_cart_of_order ?>;
-									var index= order_in_cart.indexOf('<?php echo $order_id ?>');
-									if (index > -1) {
-  									order_in_cart.splice(index, 1);
-									};
+							<script>
+              $(function() {
+                $('.close-<?php echo $n+1 ?>').on('click', function(){
+									var index= cart.indexOf(<?php echo $order_id ?>);
 									$('.rem-<?php echo $n+1 ?>').fadeOut('slow', function(c){
 										$('.rem-<?php echo $n+1 ?>').remove();
-									});
-									});
+                    $('#count-<?php echo $n+1?>').parent().parent().remove();
+                    showFinalAmount();
+                    if (index > -1) {
+    									cart.splice(index, 1);
+                      cart_num_of_order.splice(index, 1);
+                      $.cookie('cart_of_order', cart);
+                      $.cookie('cart_of_order_num', cart_num_of_order);
+  									};
+									 });
 								});
+              });
 						   </script>
 						</td>
 					</tr>
 					<script>
-					$('.value-plus-<?php echo $n+1?>').on('click', function(){
-						var divUpd = $(this).parent().find('.value-<?php echo $n+1 ?>'), newVal = parseInt(divUpd.text(), 10)+1;
-						divUpd.text(newVal);
-						<?php
-						echo "var order_in_cart_num = ". $json_cart_of_order_num . ";\n";
-						echo "order_in_cart_num[$n] = parseInt(order_in_cart_num[$n], 10) + 1;\n";
-						 ?>
-						$.cookie('cart_of_order_num', order_in_cart_num);
-					});
-					$('.value-minus-<?php echo $n+1?>').on('click', function(){
-						var divUpd = $(this).parent().find('.value-<?php echo $n+1 ?>'), newVal = parseInt(divUpd.text(), 10)-1;
-						if(newVal>=1) divUpd.text(newVal);
-						<?php
-						echo "var order_in_cart_num = ". $json_cart_of_order_num . ";\n";
-						echo "order_in_cart_num[$n] = parseInt(order_in_cart_num[$n], 10) - 1;\n";
-						 ?>
-						$.cookie('cart_of_order_num', order_in_cart_num);
-					});
+          $(function() {
+            $('.value-plus-<?php echo $n+1?>').on('click', function(){
+  						var divUpd = $(this).parent().find('.value-<?php echo $n+1 ?>'), newVal = parseInt(divUpd.text(), 10)+1;
+  						divUpd.text(newVal);
+              $('#count-<?php echo $n+1 ?>').html(newVal);
+              cart_num_of_order.splice(<?php echo $n ?>, 1, newVal);
+  						$.cookie('cart_of_order_num', cart_num_of_order);
+              showFinalAmount();
+            });
+              $('.value-minus-<?php echo $n+1?>').on('click', function(){
+    						var divUpd = $(this).parent().find('.value-<?php echo $n+1 ?>'), newVal = parseInt(divUpd.text(), 10)-1;
+    						if(newVal>=1) {
+                  divUpd.text(newVal);
+                  $('#count-<?php echo $n+1 ?>').html(newVal);
+                  cart_num_of_order.splice(<?php echo $n ?>, 1, newVal);
+                  $.cookie('cart_of_order_num', cart_num_of_order);
+                  showFinalAmount();
+                }
+
+    					});
+            });
 					</script>
 					<!-- end an order-->
 				<?php } ?>
@@ -191,7 +212,7 @@ $json_cart_of_order_num= json_encode($cart_order_num_arr);
 					<h4>小结</h4>
 					<ul>
 						<?php echo $showTotalAmount ?>
-						<li style="border-top: 1px solid #7a7a7a; padding-top:10px"><b style="font-size:17px">共计</b> : <span style="font-size:17px">￥ <?php echo $amount ?></span></li>
+						<li style="border-top: 1px solid #7a7a7a; padding-top:10px"><b style="font-size:17px">共计</b> : <span style="font-size:17px" class="finalAmount" id='amount'>￥ <?php echo $amount ?></span></li>
 					</ul>
 				</div>
 				<div class="checkout-right-basket">
@@ -215,7 +236,7 @@ $json_cart_of_order_num= json_encode($cart_order_num_arr);
 			</div>
 		</div>
 	</div>
-<!-- //checkout -->
+  <!-- //checkout -->
 
 
 <!-- Footer section -->
@@ -301,9 +322,15 @@ $json_cart_of_order_num= json_encode($cart_order_num_arr);
 
 <!-- main slider-banner -->
 <script type="text/javascript">
-	$(function(){
-
-	});
+	function showFinalAmount(){
+    var count= $('.count'), price= $('.price');
+    var n=0, amount=0;
+    while (count[n]) {
+      amount += parseInt(count[n].innerHTML, 10) * parseInt(price[n].innerHTML, 10);
+      n++;
+    }
+    $('#amount').html("￥ " + amount);
+  };
 	$('.wechat').on('click',  function(event) {
 		$('.wechat').css('border', '2px solid black');
 		$('.union').css('border', '2px solid rgb(230, 230, 230)');

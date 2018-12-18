@@ -10,6 +10,10 @@ $time = time()+24*60*60;
 setCookie("isLogin", 1, $time, "/");
 $user = new UserInfo();
 
+$cart_of_order= '1,2';
+$cart_of_order_num= '1,3';
+setCookie('cart_of_order', $cart_of_order, time() + 24*60*60, '/');
+setCookie('cart_of_order_num', $cart_of_order_num, time() + 24*60*60, '/') ;
 
 
 /*

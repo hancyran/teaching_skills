@@ -151,7 +151,7 @@ td.invert-image a img {
 	float: right;
     margin: 8em 0 0 0em;
 }
-.checkout-left-basket ul li span {
+.checkout-left-basket ul li span.count_and_price,.finalAmount{
     float: right;
 }
 .checkout-left-basket ul li:nth-child(5) {

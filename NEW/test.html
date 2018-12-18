@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script>
+      $(function(){
+        var intI=0;
+        $("#btnShow").click(function(event) {
+          intI++;
+          $(".clsShow").show().html("hello hancy")
+          .append("<div>执行次数<b>" + intI + "</b></div>");
+        });
+      })
+    </script>
+  </head>
+  <body>
+    <div class="">
+      <input type="button" name="" id="btnShow" value="button">
+    </div>
+    <div class="clsShow">
+
+    </div>
+  </body>
+</html>
